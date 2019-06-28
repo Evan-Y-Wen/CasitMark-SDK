@@ -72,7 +72,7 @@
            </widget>
           </item>
           <item row="5" column="2">
-           <widget class="QLabel" name="Label_ImageNum">
+           <widget class="QLabel" name="label_ImageNum">
             <property name="text">
              <string>999999</string>
             </property>
@@ -356,7 +356,7 @@
           <number>20</number>
          </property>
          <item row="3" column="1">
-          <widget class="QLabel" name="Label_ReadCount">
+          <widget class="QLabel" name="label_ReadCount">
            <property name="styleSheet">
             <string notr="true">font:20pt &quot;宋体&quot;;</string>
            </property>
@@ -372,15 +372,8 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_2">
-           <property name="text">
-            <string>已有图像数：</string>
-           </property>
-          </widget>
-         </item>
          <item row="8" column="0" colspan="2">
-          <widget class="QPushButton" name="Button_RecognizeControl">
+          <widget class="QPushButton" name="pushButton_Save">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
              <horstretch>0</horstretch>
@@ -394,12 +387,12 @@
             </size>
            </property>
            <property name="text">
-            <string>启动识别</string>
+            <string>保存图片</string>
            </property>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLabel" name="Label_TotalCount">
+          <widget class="QLabel" name="label_TotalCount">
            <property name="styleSheet">
             <string notr="true">font:20pt &quot;宋体&quot;;</string>
            </property>
@@ -415,13 +408,6 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_6">
-           <property name="text">
-            <string>识别图像数：</string>
            </property>
           </widget>
          </item>
@@ -452,6 +438,20 @@
           <widget class="QLabel" name="label_7">
            <property name="text">
             <string>二值化阈值：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0" colspan="2">
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>总识别图像数：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0" colspan="2">
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>有效识别图像数：</string>
            </property>
           </widget>
          </item>
@@ -547,10 +547,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>Button_RecognizeControl</sender>
+   <sender>pushButton_Save</sender>
    <signal>clicked(bool)</signal>
    <receiver>RecognizeForm</receiver>
-   <slot>Button_RecognizeControl_Click()</slot>
+   <slot>SaveImage()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>543</x>
@@ -633,7 +633,7 @@
   <slot>StartScan()</slot>
   <slot>StopScan()</slot>
   <slot>CloseDeivce()</slot>
-  <slot>Button_RecognizeControl_Click()</slot>
+  <slot>SaveImage()</slot>
   <slot>CheckBox_Rotate90_Click()</slot>
   <slot>CheckBox_AutoFilterWhitePage_Click()</slot>
   <slot>Button_OpenDirs_Click()</slot>

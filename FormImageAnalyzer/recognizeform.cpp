@@ -1,32 +1,83 @@
 #include "recognizeform.h"
 
-RecognizeForm::RecognizeForm(QWidget *parent)
-	: QDialog(parent)
+RecognizeForm::RecognizeForm(AppConfig * appConfig, QString *appExeFolder, QWidget *parent) : QDialog(parent)
 {
 	ui.setupUi(this);
 
 	setWindowTitle(u8"识别表格");
 
-	// 添加到tabwidget
-	//tabWidget->addTab(tableViewArr[index], name);
-
-	 //8、设置当前活动的tab
-	//tabWidget->setCurrentIndex(0);
-
-	//获取当前tab的总tab数
-	//int curTabCount = tabWidget->count();
-
-	// 1、获取当前选择的是哪一个tab
-	//int curTabIndex = tabWidget->currentIndex();
-	//// 若没有tab页
-	//if (-1 == curTabIndex)
-	//{
-	//	return;
-	//}
-
 	//成员变量配置初始化
-	_mAppExeFolder = nullptr;
-	_mAppConfig = nullptr;
+	_mAppConfig = appConfig;
+	_mAppExeFolder = appExeFolder;
+	_imageSaveFolder = "images";
+	_imageIndex = 0;
+	_imageCount = 0;
+	_cfgFilePath.isNull();
+
+	//控件配置初始化
+	ui.label_ImageNum->setText("0");
+	ui.label_TotalCount->setText("0");
+	ui.label_ReadCount->setText("0");
+	ui.label_ImageDPI->setText("0");
+	ui.label_ImageType->setText(u8"请设置");
+	ui.label_OtherFun->setText(u8"请设置");
+
+	ui.pushButton_Open->setEnabled(true);
+	ui.pushButton_Close->setEnabled(false);
+	ui.pushButton_StartScan->setEnabled(false);
+	ui.pushButton_StopScan->setEnabled(false);
+	ui.pushButton_Setting->setEnabled(true);
+	ui.pushButton_Save->setEnabled(false);//todo:是否还需要这个按钮？
+
+	ui.CheckBox_Rotate90->setChecked(_mAppConfig->ImageRotate90);
+	ui.CheckBox_AutoFilterWhitePage->setChecked(_mAppConfig->IsAutoFilterWhite);
+	if (_mAppConfig->BinarizeThreshold == 0)
+	{
+		ui.TextBox_BinarizeThreshold->setText(u8"自动");
+	}
+	else
+	{
+		ui.TextBox_BinarizeThreshold->setText(QString::number(_mAppConfig->BinarizeThreshold));
+	}
+
+	_imageSaveFolder = *_mAppExeFolder + "/" + _imageSaveFolder;//G:\Qt\Qt5.12.1\User\Cocer200Utility\x64\Debug\images
+	_cfgFilePath = *_mAppExeFolder + "/utility.cfg";//G:\Qt\Qt5.12.1\User\Cocer200Utility\x64\Debug\utility.cfg
+	QDir dir(_imageSaveFolder);
+	if (dir.exists())//_imageSaveFolder这个文件夹存在，这删除它里面的所有内容，若不存在则新建一个文件夹。
+	{
+		dir.setFilter(QDir::Files);
+		QStringList filters;
+		filters.push_back("*.bmp");
+		dir.setNameFilters(filters);
+		QFileInfoList files = dir.entryInfoList();
+		for (int i = 0; i < files.size(); ++i)
+			QFile::remove(files[i].filePath());
+	}
+	else
+	{
+		dir.mkdir(_imageSaveFolder);
+	}
+
+	// 绑定状态通知和图像产生信号槽
+	connect(&_dev, &cs200::Cocer200Scan::InfoChanged, this, &RecognizeForm::OnDeviceInfoChanged);
+	connect(&_dev, &cs200::Cocer200Scan::ImageGenerated, this, &RecognizeForm::OnDeviceImageGenerated);
+
+	QFile cfgFile(_cfgFilePath);
+	if (cfgFile.exists())
+	{
+		_dev.GetDevCfg()->ReadFromFile(cfgFile.fileName());
+	}
+	else
+	{
+		_dev.GetDevCfg()->SaveToFile(cfgFile.fileName());
+	}
+	// 初始化
+	if (!_dev.Initialize())
+	{
+		ui.frame->setEnabled(false);
+		QMessageBox::critical(this, QStringLiteral("Error"), QStringLiteral("OCR阅读机初始化失败！"));
+		return;
+	}
 }
 
 
@@ -71,42 +122,6 @@ void RecognizeForm::CheckBox_AutoFilterWhitePage_Click()
 	QVariant tempValue = _mAppConfig->ImageRotate90;
 	_mAppConfig->ChangeXMLElement((*_mAppExeFolder) + "/AppConfig.xml", "IsAutoFilterWhite", tempValue.toString());
 }
-
-
-/***************************************
-*函数功能：启动识别按钮槽函数。
-*输入：
-*	void
-*输出：
-*	void
-*作者：JZQ
-*时间版本：2019-06-24-V1.0
-***************************************/
-void RecognizeForm::Button_RecognizeControl_Click()
-{
-	//todo：这个按钮是否还需要存在？
-	/*
-	if (_recognizeRunning)
-	{
-		_recognizeRunning = false;
-		Button_RecognizeControl.Content = "启动识别";
-		ProcessRing_Running.IsActive = false;
-		if (_recognizeThread != null)
-			_recognizeThread.Join();
-	}
-	else
-	{
-		_recognizeRunning = true;
-		Button_RecognizeControl.Content = "停止识别";
-		ProcessRing_Running.IsActive = true;
-		_recognizeThread = new Thread(new ThreadStart(ImageRecognizeThreadFun));
-		_recognizeThread.Priority = ThreadPriority.Highest;
-		_recognizeThread.Name = "表格图像识别线程";
-		_recognizeThread.Start();
-	}
-	*/
-}
-
 
 
 /***************************************
@@ -227,84 +242,30 @@ void RecognizeForm::Setting()
 
 
 /***************************************
-*函数功能：从文件夹中选择图片文件按钮槽函数
+*函数功能：保存图片按钮槽函数，保存识别出的图片到文件夹
 *输入：
 *	void
 *输出：
 *	void
 *作者：JZQ
-*时间版本：2019-06-25-V1.0
+*时间版本：2019-06-26-V1.0
 ***************************************/
-void RecognizeForm::Button_OpenDirs_Click()
-{
-	QString dirPath = QFileDialog::getExistingDirectory(this, QString(u8"选择图像所在文件夹"), QString());
-	if (dirPath.isEmpty())
+void RecognizeForm::SaveImage()
+{//图像在图像数据采集到响应槽中已经保存了
+	/*
+	QString dir = QFileDialog::getExistingDirectory(this, u8"保存到...");
+	if (!dir.isEmpty())
 	{
-		QMessageBox::information(this, QStringLiteral("取消选择"), QStringLiteral("取消图像文件夹选择"));
-		return;
-	}
-
-	try
-	{
-		QDir dir(dirPath);
-		QStringList ImageFormat;
-		QStringList FileNameList;//保存文件夹里的文件名
-		ImageFormat
-			<< "*.bmp" << "*.BMP"
-			<< "*.jpg" << "*.JPG"
-			<< "*.jpeg" << "*.JPEG"
-			<< "*.png" << "*.PNG"
-			<< "*.tif" << "*.TIF"
-			<< "*.tiff" << "*.TIFF";
-
-		QFileInfoList FileList = dir.entryInfoList(ImageFormat, QDir::Files, QDir::Unsorted);
-		foreach(QFileInfo file, FileList)
+		QList< QListWidgetItem *> items = ui.listWidget_ImageList->selectedItems();
+		for (int i = 0; i < items.count(); ++i)
 		{
-			FileNameList.push_back(file.fileName());
-		}
-		if (QMessageBox::question(this, (u8"提示？"), (u8"共选择" + QString::number(FileNameList.size()) + u8"张图像，确认添加？")) == QMessageBox::Ok)
-		{
-			//_ImageMgr.AddImageFiles(imgFileNames.ToArray());
-			//todo:做上面的操作
+			QListWidgetItem *item = items[i];
+			QString imgPrefix = item->text();
+			QString frontImgPath = _imageSaveFolder + "/" + imgPrefix + "_F.bmp";
+			QFile::copy(frontImgPath, dir + "/" + imgPrefix + "_F.bmp");
 		}
 	}
-	catch (const std::exception & ex)
-	{
-		QMessageBox::warning(this, QStringLiteral("添加失败"), QString(ex.what()));
-	}
-}
-
-
-/***************************************
-*函数功能：从计算机中选择图片文件按钮槽函数
-*输入：
-*	void
-*输出：
-*	void
-*作者：JZQ
-*时间版本：2019-06-25-V1.0
-***************************************/
-void RecognizeForm::Button_OpenFiles_Click()
-{
-	QStringList fileNames = QFileDialog::getOpenFileNames(this, QString(u8"图像文件"), QString(), u8"图像文件|(*.bmp;*.jpg;*jpeg;*.png;*.tif;*.tiff)");
-	if (fileNames.isEmpty())
-	{
-		QMessageBox::information(this, QStringLiteral("取消选择"), QStringLiteral("取消图像文件选择"));
-		return;
-	}
-
-	try
-	{
-		if (QMessageBox::question(this, (u8"提示？"), (u8"共选择" + QString::number(fileNames.size()) + u8"张图像，确认添加？")) == QMessageBox::Ok)
-		{
-			//_ImageMgr.AddImageFiles(fileNames);
-			//todo:做上面的操作
-		}
-	}
-	catch (const std::exception & ex)
-	{
-		QMessageBox::warning(this, QStringLiteral("添加失败"), QString(ex.what()));
-	}
+	*/
 }
 
 
@@ -394,126 +355,137 @@ void RecognizeForm::OnDeviceInfoChanged(cs200::eDeviceInfo info)
 ***************************************/
 void RecognizeForm::OnDeviceImageGenerated(uchar * fImgBuf, int fBufLen, uchar * bImgBuf, int bBufLen)
 {
-	//todo：这里需要重写，和原来的代码不一致，我的程序里只有一张图片。先询问一下温师兄。
-	/*
-	QString imgPrefix = u8"图像" + QString::number(_imageIndex);
-	QListWidgetItem *item = new QListWidgetItem();
-	item->setText(imgPrefix);
-	QFont font = item->font();
-	font.setPointSize(16);
-	item->setFont(font);
-	ui.listWidget_ImageList->addItem(item);
-	ui.listWidget_ImageList->scrollToBottom();
-	item->setSelected(true);
+	_imageCount++;
+	ui.label_ImageNum->setText(QString::number(_imageCount));
+	ui.label_TotalCount->setText(QString::number(_imageCount));
 
-	if (fImgBuf != NULL)
+	if (fImgBuf == nullptr || bImgBuf == nullptr || fBufLen == 0 || bBufLen == 0)
 	{
-		QString frontImgPath = _imageSaveFolder + "/" + imgPrefix + "_F.bmp";
-		QFile fFile(frontImgPath);
-		fFile.open(QIODevice::Truncate | QIODevice::WriteOnly);
-		fFile.write((char*)fImgBuf, fBufLen);
-		fFile.close();
-		delete[] fImgBuf;
-		ui.frame_Left->setImage(frontImgPath);
-	}
-
-	if (bImgBuf != NULL)
-	{
-		QString backImgPath = _imageSaveFolder + "/" + imgPrefix + "_B.bmp";
-		QFile bFile(backImgPath);
-		bFile.open(QIODevice::Truncate | QIODevice::WriteOnly);
-		bFile.write((char*)bImgBuf, bBufLen);
-		bFile.close();
-		delete[] bImgBuf;
-		ui.frame_Right->setImage(backImgPath);
+		return;
 	}
 
 	_imageIndex++;
+	//todo：这里需要重写，和原来的代码不一致，我的程序里只有一张图片。先询问一下温师兄。
+	QString imgPrefix = u8"图像" + QString::number(_imageIndex);
+	ui.label_ReadCount->setText(QString::number(_imageIndex));
+
+	//判断正反面,若是正面，则为0的像素点会比反面少、todo:白色像素点是否是0
+	int fImgBufCount = 0;
+	int bImgBufCount = 0;
+	uchar * ImageData = nullptr;
+	int ImageDataLen = 0;
+	for (int i = 0; i < fBufLen || i < bBufLen; ++i)
+	{
+		if (fImgBuf[i] == '0')
+		{
+			fImgBufCount++;
+		}
+		if (bImgBuf[i] == '0')
+		{
+			bImgBufCount++;
+		}
+	}
+	if (fImgBufCount <= bImgBufCount)
+	{
+		ImageData = fImgBuf;// fImgBuf为正面
+		ImageDataLen = fBufLen;
+	}
+	else
+	{
+		ImageData = bImgBuf;// bImgBuf为正面
+		ImageDataLen = bBufLen;
+	}
+
+	QString frontImgPath = _imageSaveFolder + "/" + imgPrefix + ".bmp";
+	QFile fFile(frontImgPath);
+	fFile.open(QIODevice::Truncate | QIODevice::WriteOnly);
+	fFile.write((char*)ImageData, ImageDataLen);
+	fFile.close();
+	delete[] ImageData;
+	//todo:ui.frame_Right->setImage(backImgPath);
 
 	if (!ui.pushButton_Save->isEnabled())
 		ui.pushButton_Save->setEnabled(true);
-	*/
 }
 
+
 /***************************************
-*函数功能：设置系统配置，并初始化该子窗口
+*函数功能：从文件夹中选择图片文件按钮槽函数
 *输入：
-*	appConfig：传入系统配置
+*	void
 *输出：
 *	void
 *作者：JZQ
-*时间版本：2019-06-24-V1.0
+*时间版本：2019-06-25-V1.0
 ***************************************/
-void RecognizeForm::setupRecognizeChildWindow(AppConfig * appConfig, QString *appExeFolder)
+void RecognizeForm::Button_OpenDirs_Click()
 {
-	_mAppConfig = appConfig;
-	_mAppExeFolder = appExeFolder;
-	_imageSaveFolder = "images";
-	_cfgFilePath.isNull();
-
-	//控件配置初始化
-	ui.Label_ImageNum->setText("0");
-	ui.Label_TotalCount->setText("0");
-	ui.Label_ReadCount->setText("0");
-	ui.label_ImageDPI->setText("0");
-	ui.label_ImageType->setText(u8"请设置");
-	ui.label_OtherFun->setText(u8"请设置");
-
-	ui.pushButton_Open->setEnabled(true);
-	ui.pushButton_Close->setEnabled(false);
-	ui.pushButton_StartScan->setEnabled(false);
-	ui.pushButton_StopScan->setEnabled(false);
-	ui.pushButton_Setting->setEnabled(true);
-	ui.Button_RecognizeControl->setEnabled(false);//todo:是否还需要这个按钮？
-
-	ui.CheckBox_Rotate90->setChecked(_mAppConfig->ImageRotate90);
-	ui.CheckBox_AutoFilterWhitePage->setChecked(_mAppConfig->IsAutoFilterWhite);
-	if (_mAppConfig->BinarizeThreshold == 0)
+	QString dirPath = QFileDialog::getExistingDirectory(this, QString(u8"选择图像所在文件夹"), QString());
+	if (dirPath.isEmpty())
 	{
-		ui.TextBox_BinarizeThreshold->setText(u8"自动");
-	}
-	else
-	{
-		ui.TextBox_BinarizeThreshold->setText(QString::number(_mAppConfig->BinarizeThreshold));
-	}
-
-	_imageSaveFolder = *_mAppExeFolder + "/" + _imageSaveFolder;//G:\Qt\Qt5.12.1\User\Cocer200Utility\x64\Debug\images
-	_cfgFilePath = *_mAppExeFolder + "/utility.cfg";//G:\Qt\Qt5.12.1\User\Cocer200Utility\x64\Debug\utility.cfg
-	QDir dir(_imageSaveFolder);
-	if (dir.exists())//_imageSaveFolder这个文件夹存在，这删除它里面的所有内容，若不存在则新建一个文件夹。
-	{
-		dir.setFilter(QDir::Files);
-		QStringList filters;
-		filters.push_back("*.bmp");
-		dir.setNameFilters(filters);
-		QFileInfoList files = dir.entryInfoList();
-		for (int i = 0; i < files.size(); ++i)
-			QFile::remove(files[i].filePath());
-	}
-	else
-	{
-		dir.mkdir(_imageSaveFolder);
-	}
-
-	// 绑定状态通知和图像产生信号槽
-	connect(&_dev, &cs200::Cocer200Scan::InfoChanged, this, &RecognizeForm::OnDeviceInfoChanged);
-	connect(&_dev, &cs200::Cocer200Scan::ImageGenerated, this, &RecognizeForm::OnDeviceImageGenerated);
-
-	QFile cfgFile(_cfgFilePath);
-	if (cfgFile.exists())
-	{
-		_dev.GetDevCfg()->ReadFromFile(cfgFile.fileName());
-	}
-	else
-	{
-		_dev.GetDevCfg()->SaveToFile(cfgFile.fileName());
-	}
-	// 初始化
-	if (!_dev.Initialize())
-	{
-		ui.frame->setEnabled(false);
-		QMessageBox::critical(this, QStringLiteral("Error"), QStringLiteral("OCR阅读机初始化失败！"));
+		QMessageBox::information(this, QStringLiteral("取消选择"), QStringLiteral("取消图像文件夹选择"));
 		return;
+	}
+
+	try
+	{
+		QDir dir(dirPath);
+		QStringList ImageFormat;
+		QStringList FileNameList;//保存文件夹里的文件名
+		ImageFormat
+			<< "*.bmp" << "*.BMP"
+			<< "*.jpg" << "*.JPG"
+			<< "*.jpeg" << "*.JPEG"
+			<< "*.png" << "*.PNG"
+			<< "*.tif" << "*.TIF"
+			<< "*.tiff" << "*.TIFF";
+
+		QFileInfoList FileList = dir.entryInfoList(ImageFormat, QDir::Files, QDir::Unsorted);
+		foreach(QFileInfo file, FileList)
+		{
+			FileNameList.push_back(file.fileName());
+		}
+		if (QMessageBox::question(this, (u8"提示？"), (u8"共选择" + QString::number(FileNameList.size()) + u8"张图像，确认添加？")) == QMessageBox::Ok)
+		{
+			//_ImageMgr.AddImageFiles(imgFileNames.ToArray());
+			//todo:做上面的操作
+		}
+	}
+	catch (const std::exception & ex)
+	{
+		QMessageBox::warning(this, QStringLiteral("添加失败"), QString(ex.what()));
 	}
 }
 
+
+/***************************************
+*函数功能：从计算机中选择图片文件按钮槽函数
+*输入：
+*	void
+*输出：
+*	void
+*作者：JZQ
+*时间版本：2019-06-25-V1.0
+***************************************/
+void RecognizeForm::Button_OpenFiles_Click()
+{
+	QStringList fileNames = QFileDialog::getOpenFileNames(this, QString(u8"图像文件"), QString(), u8"图像文件|(*.bmp;*.jpg;*jpeg;*.png;*.tif;*.tiff)");
+	if (fileNames.isEmpty())
+	{
+		QMessageBox::information(this, QStringLiteral("取消选择"), QStringLiteral("取消图像文件选择"));
+		return;
+	}
+
+	try
+	{
+		if (QMessageBox::question(this, (u8"提示？"), (u8"共选择" + QString::number(fileNames.size()) + u8"张图像，确认添加？")) == QMessageBox::Ok)
+		{
+			//_ImageMgr.AddImageFiles(fileNames);
+			//todo:做上面的操作
+		}
+	}
+	catch (const std::exception & ex)
+	{
+		QMessageBox::warning(this, QStringLiteral("添加失败"), QString(ex.what()));
+	}
+}

@@ -38,6 +38,9 @@
            <height>80</height>
           </size>
          </property>
+         <property name="styleSheet">
+          <string notr="true">font: 14pt &quot;宋体&quot;;</string>
+         </property>
          <property name="frameShape">
           <enum>QFrame::WinPanel</enum>
          </property>
@@ -72,6 +75,19 @@
            </widget>
           </item>
           <item>
+           <widget class="QToolButton" name="Button_Rerecognize">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>重新识别</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QToolButton" name="Button_AddData">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -94,19 +110,6 @@
             </property>
             <property name="text">
              <string>导出数据</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QToolButton" name="Button_Rerecognize">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>重新识别</string>
             </property>
            </widget>
           </item>
@@ -146,6 +149,9 @@
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 14pt &quot;宋体&quot;;</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::Panel</enum>
@@ -304,6 +310,9 @@
             <height>0</height>
            </size>
           </property>
+          <property name="styleSheet">
+           <string notr="true">font: 14pt &quot;宋体&quot;;</string>
+          </property>
           <property name="frameShape">
            <enum>QFrame::Panel</enum>
           </property>
@@ -324,8 +333,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>326</width>
-                   <height>644</height>
+                   <width>276</width>
+                   <height>637</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayout_2">

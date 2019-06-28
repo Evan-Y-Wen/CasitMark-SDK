@@ -17,7 +17,6 @@ ScanSetting::ScanSetting(cs200::DeviceConfig *devCfg, QWidget *parent)
     Qt::WindowFlags flags = this->windowFlags();
     setWindowFlags(flags&~Qt::WindowContextHelpButtonHint);
 
-	//ui.comboBox_ImageDPI->setView(new QListView());//调整ComboBox下拉项目的间隔
     ui.comboBox_ImageDPI->setCurrentText(QString::number(_devCfg->Dev_DPI));
     QButtonGroup *bg = new QButtonGroup(this);
     bg->addButton(ui.radioButton_TypeColor);
@@ -114,7 +113,6 @@ void ScanSetting::Confirm()
 		_devCfg->Dev_DoublePaperCheck = false;
 		_mCheckBox_DoubleCheck = u8"未开启重张检测";
 	}
-
     this->accept();
 }
 

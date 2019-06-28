@@ -2,7 +2,7 @@
 
 PixItem::PixItem(QPixmap *pixmap)
 {
-	pix = *pixmap;
+	_mPix = pixmap;
 	_mMousePos = QPointF(0, 0);
 	_mIsPress = false;
 	_mSelectionModel = nullptr;
@@ -26,7 +26,7 @@ PixItem::~PixItem()
 ***************************************/
 QRectF PixItem::boundingRect() const
 {
-	return QRectF(-2 - pix.width() / 2, -2 - pix.height() / 2, pix.width() + 4, pix.height() + 4);
+	return QRectF(-2 - _mPix->width() / 2, -2 - _mPix->height() / 2, _mPix->width() + 4, _mPix->height() + 4);
 }
 
 
@@ -43,7 +43,7 @@ QRectF PixItem::boundingRect() const
 ***************************************/
 void PixItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-	painter->drawPixmap(-pix.width() / 2, -pix.height() / 2, pix);
+	painter->drawPixmap(-_mPix->width() / 2, -_mPix->height() / 2, *_mPix);
 
 	if (_mSelectionModel == nullptr)
 	{
@@ -166,6 +166,15 @@ void PixItem::wheelEvent(QGraphicsSceneWheelEvent * event)
 }
 
 
+/***************************************
+*函数功能：设置当前选中的Item，实现Item和图元的通信
+*输入：
+*	selectionModel：当前选中的Item
+*输出：
+*	void
+*作者：JZQ
+*时间版本：2019-06-26-V1.0
+***************************************/
 void PixItem::setSelectionModel(QItemSelectionModel * selectionModel)
 {
 	_mSelectionModel = selectionModel;

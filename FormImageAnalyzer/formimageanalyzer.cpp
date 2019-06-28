@@ -165,12 +165,6 @@ void FormImageAnalyzer::OnButtonNegativeRotate()
 ***************************************/
 void FormImageAnalyzer::OnButtonOpenPatten()
 {
-	if (_mPixmap != nullptr)
-	{
-		delete _mPixmap;
-		_mPixmap = nullptr;
-	}
-	_mPixmap = new QPixmap;
 	//加载图片文件  todo:修改选择的文件格式
 	QString fileName = QFileDialog::getOpenFileName(this, QString(), QString(), "Images(*.png *.bmp *.jpg *.tif *.GIF)");
 	if (fileName.isEmpty())
@@ -179,11 +173,12 @@ void FormImageAnalyzer::OnButtonOpenPatten()
 		return;
 	}
 
-	if (!(_mPixmap->load(fileName))) //加载图像
+	if (_mPixmap != nullptr)
 	{
-		QMessageBox::information(this, QStringLiteral("失败"), QStringLiteral("打开图像失败!"));
-		return;
+		delete _mPixmap;
+		_mPixmap = nullptr;
 	}
+	_mPixmap = new QPixmap;
 
 	if (_mPixItem != nullptr)
 	{
@@ -192,13 +187,19 @@ void FormImageAnalyzer::OnButtonOpenPatten()
 	}
 	_mPixItem = new PixItem(_mPixmap);
 
+	if (!(_mPixmap->load(fileName))) //加载图像
+	{
+		QMessageBox::information(this, QStringLiteral("失败"), QStringLiteral("打开图像失败!"));
+		return;
+	}
+
 	if (_mGraphicsScene != nullptr)
 	{
 		delete _mGraphicsScene;
 		_mGraphicsScene = nullptr;
 	}
 	_mGraphicsScene = new QGraphicsScene;
-	//_mGraphicsScene->setSceneRect(-200, -200, 400, 400);
+
 	_mGraphicsScene->addItem(_mPixItem);
 	ui.graphicsView->setScene(_mGraphicsScene);
 
@@ -231,8 +232,7 @@ void FormImageAnalyzer::OnButtonOpenPatten()
 ***************************************/
 void FormImageAnalyzer::OnButtonRecognize()
 {
-	RecognizeForm RecognizeChildWindow;
-	RecognizeChildWindow.setupRecognizeChildWindow(appConfig, appExeFolder);
+	RecognizeForm RecognizeChildWindow(appConfig, appExeFolder, this);
 	RecognizeChildWindow.exec();
 }
 
@@ -411,7 +411,7 @@ void FormImageAnalyzer::selectionChanged(const QItemSelection & selected, const 
 
 
 /***************************************
-*函数功能：建立一个模式
+*函数功能：建立一个模型
 *输入：
 *	void
 *输出：

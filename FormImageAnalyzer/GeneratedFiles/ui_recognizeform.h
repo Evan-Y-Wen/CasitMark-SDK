@@ -37,7 +37,7 @@ public:
     QGridLayout *gridLayout_2;
     QPushButton *pushButton_StartScan;
     QLabel *Label_Label_ImageNumTitle;
-    QLabel *Label_ImageNum;
+    QLabel *label_ImageNum;
     QPushButton *pushButton_StopScan;
     QPushButton *pushButton_Close;
     QPushButton *pushButton_Open;
@@ -63,16 +63,16 @@ public:
     QFrame *line;
     QGroupBox *groupBox;
     QGridLayout *gridLayout;
-    QLabel *Label_ReadCount;
+    QLabel *label_ReadCount;
     QCheckBox *CheckBox_Rotate90;
-    QLabel *label_2;
-    QPushButton *Button_RecognizeControl;
-    QLabel *Label_TotalCount;
+    QPushButton *pushButton_Save;
+    QLabel *label_TotalCount;
     QLineEdit *TextBox_BinarizeThreshold;
-    QLabel *label_6;
     QCheckBox *CheckBox_AutoFilterWhitePage;
     QSpacerItem *verticalSpacer_6;
     QLabel *label_7;
+    QLabel *label_2;
+    QLabel *label_6;
 
     void setupUi(QDialog *RecognizeForm)
     {
@@ -118,10 +118,10 @@ public:
 
         gridLayout_2->addWidget(Label_Label_ImageNumTitle, 5, 1, 1, 1);
 
-        Label_ImageNum = new QLabel(tab1);
-        Label_ImageNum->setObjectName(QString::fromUtf8("Label_ImageNum"));
+        label_ImageNum = new QLabel(tab1);
+        label_ImageNum->setObjectName(QString::fromUtf8("label_ImageNum"));
 
-        gridLayout_2->addWidget(Label_ImageNum, 5, 2, 1, 1);
+        gridLayout_2->addWidget(label_ImageNum, 5, 2, 1, 1);
 
         pushButton_StopScan = new QPushButton(tab1);
         pushButton_StopScan->setObjectName(QString::fromUtf8("pushButton_StopScan"));
@@ -268,35 +268,30 @@ public:
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setVerticalSpacing(20);
-        Label_ReadCount = new QLabel(groupBox);
-        Label_ReadCount->setObjectName(QString::fromUtf8("Label_ReadCount"));
-        Label_ReadCount->setStyleSheet(QString::fromUtf8("font:20pt \"\345\256\213\344\275\223\";"));
+        label_ReadCount = new QLabel(groupBox);
+        label_ReadCount->setObjectName(QString::fromUtf8("label_ReadCount"));
+        label_ReadCount->setStyleSheet(QString::fromUtf8("font:20pt \"\345\256\213\344\275\223\";"));
 
-        gridLayout->addWidget(Label_ReadCount, 3, 1, 1, 1);
+        gridLayout->addWidget(label_ReadCount, 3, 1, 1, 1);
 
         CheckBox_Rotate90 = new QCheckBox(groupBox);
         CheckBox_Rotate90->setObjectName(QString::fromUtf8("CheckBox_Rotate90"));
 
         gridLayout->addWidget(CheckBox_Rotate90, 6, 0, 1, 2);
 
-        label_2 = new QLabel(groupBox);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
+        pushButton_Save = new QPushButton(groupBox);
+        pushButton_Save->setObjectName(QString::fromUtf8("pushButton_Save"));
+        sizePolicy.setHeightForWidth(pushButton_Save->sizePolicy().hasHeightForWidth());
+        pushButton_Save->setSizePolicy(sizePolicy);
+        pushButton_Save->setMinimumSize(QSize(200, 80));
 
-        gridLayout->addWidget(label_2, 0, 0, 1, 1);
+        gridLayout->addWidget(pushButton_Save, 8, 0, 1, 2);
 
-        Button_RecognizeControl = new QPushButton(groupBox);
-        Button_RecognizeControl->setObjectName(QString::fromUtf8("Button_RecognizeControl"));
-        sizePolicy.setHeightForWidth(Button_RecognizeControl->sizePolicy().hasHeightForWidth());
-        Button_RecognizeControl->setSizePolicy(sizePolicy);
-        Button_RecognizeControl->setMinimumSize(QSize(200, 80));
+        label_TotalCount = new QLabel(groupBox);
+        label_TotalCount->setObjectName(QString::fromUtf8("label_TotalCount"));
+        label_TotalCount->setStyleSheet(QString::fromUtf8("font:20pt \"\345\256\213\344\275\223\";"));
 
-        gridLayout->addWidget(Button_RecognizeControl, 8, 0, 1, 2);
-
-        Label_TotalCount = new QLabel(groupBox);
-        Label_TotalCount->setObjectName(QString::fromUtf8("Label_TotalCount"));
-        Label_TotalCount->setStyleSheet(QString::fromUtf8("font:20pt \"\345\256\213\344\275\223\";"));
-
-        gridLayout->addWidget(Label_TotalCount, 1, 1, 1, 1);
+        gridLayout->addWidget(label_TotalCount, 1, 1, 1, 1);
 
         TextBox_BinarizeThreshold = new QLineEdit(groupBox);
         TextBox_BinarizeThreshold->setObjectName(QString::fromUtf8("TextBox_BinarizeThreshold"));
@@ -304,11 +299,6 @@ public:
         TextBox_BinarizeThreshold->setSizePolicy(sizePolicy);
 
         gridLayout->addWidget(TextBox_BinarizeThreshold, 5, 1, 1, 1);
-
-        label_6 = new QLabel(groupBox);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
-
-        gridLayout->addWidget(label_6, 2, 0, 1, 1);
 
         CheckBox_AutoFilterWhitePage = new QCheckBox(groupBox);
         CheckBox_AutoFilterWhitePage->setObjectName(QString::fromUtf8("CheckBox_AutoFilterWhitePage"));
@@ -325,6 +315,16 @@ public:
 
         gridLayout->addWidget(label_7, 5, 0, 1, 1);
 
+        label_2 = new QLabel(groupBox);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+
+        gridLayout->addWidget(label_2, 0, 0, 1, 2);
+
+        label_6 = new QLabel(groupBox);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+
+        gridLayout->addWidget(label_6, 2, 0, 1, 2);
+
 
         horizontalLayout->addWidget(groupBox);
 
@@ -338,7 +338,7 @@ public:
         QObject::connect(pushButton_Close, SIGNAL(clicked(bool)), RecognizeForm, SLOT(CloseDeivce()));
         QObject::connect(pushButton_StartScan, SIGNAL(clicked(bool)), RecognizeForm, SLOT(StartScan()));
         QObject::connect(pushButton_StopScan, SIGNAL(clicked(bool)), RecognizeForm, SLOT(StopScan()));
-        QObject::connect(Button_RecognizeControl, SIGNAL(clicked(bool)), RecognizeForm, SLOT(Button_RecognizeControl_Click()));
+        QObject::connect(pushButton_Save, SIGNAL(clicked(bool)), RecognizeForm, SLOT(SaveImage()));
         QObject::connect(CheckBox_AutoFilterWhitePage, SIGNAL(clicked(bool)), RecognizeForm, SLOT(CheckBox_AutoFilterWhitePage_Click()));
         QObject::connect(CheckBox_Rotate90, SIGNAL(clicked(bool)), RecognizeForm, SLOT(CheckBox_Rotate90_Click()));
         QObject::connect(Button_OpenDirs, SIGNAL(clicked(bool)), RecognizeForm, SLOT(Button_OpenDirs_Click()));
@@ -355,7 +355,7 @@ public:
         RecognizeForm->setWindowTitle(QApplication::translate("RecognizeForm", "RecognizeForm", nullptr));
         pushButton_StartScan->setText(QApplication::translate("RecognizeForm", "\345\274\200\345\247\213\346\211\253\346\217\217", nullptr));
         Label_Label_ImageNumTitle->setText(QApplication::translate("RecognizeForm", "\351\230\205\350\257\273\345\233\276\345\203\217\350\256\241\346\225\260\357\274\232", nullptr));
-        Label_ImageNum->setText(QApplication::translate("RecognizeForm", "999999", nullptr));
+        label_ImageNum->setText(QApplication::translate("RecognizeForm", "999999", nullptr));
         pushButton_StopScan->setText(QApplication::translate("RecognizeForm", "\345\201\234\346\255\242\346\211\253\346\217\217", nullptr));
         pushButton_Close->setText(QApplication::translate("RecognizeForm", "\345\205\263\351\227\255\351\230\205\350\257\273\344\273\252", nullptr));
         pushButton_Open->setText(QApplication::translate("RecognizeForm", "\346\211\223\345\274\200\351\230\205\350\257\273\344\273\252", nullptr));
@@ -372,14 +372,14 @@ public:
         Button_OpenFiles->setText(QApplication::translate("RecognizeForm", "\344\273\216\350\256\241\347\256\227\346\234\272\345\257\274\345\205\245\345\233\276\345\203\217\346\226\207\344\273\266", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab2), QApplication::translate("RecognizeForm", "\345\233\276\345\203\217\346\226\207\344\273\266", nullptr));
         groupBox->setTitle(QApplication::translate("RecognizeForm", "\350\257\206\345\210\253", nullptr));
-        Label_ReadCount->setText(QApplication::translate("RecognizeForm", "XXXXXX", nullptr));
+        label_ReadCount->setText(QApplication::translate("RecognizeForm", "XXXXXX", nullptr));
         CheckBox_Rotate90->setText(QApplication::translate("RecognizeForm", "\350\242\253\350\257\206\345\210\253\345\233\276\345\203\217\346\227\213\350\275\25490\345\272\246", nullptr));
-        label_2->setText(QApplication::translate("RecognizeForm", "\345\267\262\346\234\211\345\233\276\345\203\217\346\225\260\357\274\232", nullptr));
-        Button_RecognizeControl->setText(QApplication::translate("RecognizeForm", "\345\220\257\345\212\250\350\257\206\345\210\253", nullptr));
-        Label_TotalCount->setText(QApplication::translate("RecognizeForm", "XXXXXX", nullptr));
-        label_6->setText(QApplication::translate("RecognizeForm", "\350\257\206\345\210\253\345\233\276\345\203\217\346\225\260\357\274\232", nullptr));
+        pushButton_Save->setText(QApplication::translate("RecognizeForm", "\344\277\235\345\255\230\345\233\276\347\211\207", nullptr));
+        label_TotalCount->setText(QApplication::translate("RecognizeForm", "XXXXXX", nullptr));
         CheckBox_AutoFilterWhitePage->setText(QApplication::translate("RecognizeForm", "\350\207\252\345\212\250\350\277\207\346\273\244\347\231\275\345\233\276\345\203\217", nullptr));
         label_7->setText(QApplication::translate("RecognizeForm", "\344\272\214\345\200\274\345\214\226\351\230\210\345\200\274\357\274\232", nullptr));
+        label_2->setText(QApplication::translate("RecognizeForm", "\346\200\273\350\257\206\345\210\253\345\233\276\345\203\217\346\225\260\357\274\232", nullptr));
+        label_6->setText(QApplication::translate("RecognizeForm", "\346\234\211\346\225\210\350\257\206\345\210\253\345\233\276\345\203\217\346\225\260\357\274\232", nullptr));
     } // retranslateUi
 
 };

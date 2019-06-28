@@ -39,9 +39,9 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QToolButton *Button_OpenPattern;
     QToolButton *Button_Recognize;
+    QToolButton *Button_Rerecognize;
     QToolButton *Button_AddData;
     QToolButton *Button_SaveData;
-    QToolButton *Button_Rerecognize;
     QToolButton *Button_ExcelRead;
     QSplitter *splitter;
     QFrame *frame_3;
@@ -91,6 +91,7 @@ public:
         frame->setObjectName(QString::fromUtf8("frame"));
         frame->setMinimumSize(QSize(0, 80));
         frame->setMaximumSize(QSize(16777215, 80));
+        frame->setStyleSheet(QString::fromUtf8("font: 14pt \"\345\256\213\344\275\223\";"));
         frame->setFrameShape(QFrame::WinPanel);
         horizontalLayout_2 = new QHBoxLayout(frame);
         horizontalLayout_2->setSpacing(50);
@@ -113,6 +114,13 @@ public:
 
         horizontalLayout_2->addWidget(Button_Recognize);
 
+        Button_Rerecognize = new QToolButton(frame);
+        Button_Rerecognize->setObjectName(QString::fromUtf8("Button_Rerecognize"));
+        sizePolicy.setHeightForWidth(Button_Rerecognize->sizePolicy().hasHeightForWidth());
+        Button_Rerecognize->setSizePolicy(sizePolicy);
+
+        horizontalLayout_2->addWidget(Button_Rerecognize);
+
         Button_AddData = new QToolButton(frame);
         Button_AddData->setObjectName(QString::fromUtf8("Button_AddData"));
         sizePolicy.setHeightForWidth(Button_AddData->sizePolicy().hasHeightForWidth());
@@ -126,13 +134,6 @@ public:
         Button_SaveData->setSizePolicy(sizePolicy);
 
         horizontalLayout_2->addWidget(Button_SaveData);
-
-        Button_Rerecognize = new QToolButton(frame);
-        Button_Rerecognize->setObjectName(QString::fromUtf8("Button_Rerecognize"));
-        sizePolicy.setHeightForWidth(Button_Rerecognize->sizePolicy().hasHeightForWidth());
-        Button_Rerecognize->setSizePolicy(sizePolicy);
-
-        horizontalLayout_2->addWidget(Button_Rerecognize);
 
         Button_ExcelRead = new QToolButton(frame);
         Button_ExcelRead->setObjectName(QString::fromUtf8("Button_ExcelRead"));
@@ -156,6 +157,7 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(frame_3->sizePolicy().hasHeightForWidth());
         frame_3->setSizePolicy(sizePolicy1);
+        frame_3->setStyleSheet(QString::fromUtf8("font: 14pt \"\345\256\213\344\275\223\";"));
         frame_3->setFrameShape(QFrame::Panel);
         verticalLayout_7 = new QVBoxLayout(frame_3);
         verticalLayout_7->setSpacing(6);
@@ -246,6 +248,7 @@ public:
         sizePolicy.setHeightForWidth(frame_1->sizePolicy().hasHeightForWidth());
         frame_1->setSizePolicy(sizePolicy);
         frame_1->setMinimumSize(QSize(300, 0));
+        frame_1->setStyleSheet(QString::fromUtf8("font: 14pt \"\345\256\213\344\275\223\";"));
         frame_1->setFrameShape(QFrame::Panel);
         verticalLayout_6 = new QVBoxLayout(frame_1);
         verticalLayout_6->setSpacing(6);
@@ -262,7 +265,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 326, 644));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 276, 637));
         gridLayout_2 = new QGridLayout(scrollAreaWidgetContents_2);
         gridLayout_2->setSpacing(6);
         gridLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -307,9 +310,9 @@ public:
         FormImageAnalyzerClass->setWindowTitle(QApplication::translate("FormImageAnalyzerClass", "FormImageAnalyzer", nullptr));
         Button_OpenPattern->setText(QApplication::translate("FormImageAnalyzerClass", "\345\210\207\346\215\242\346\250\241\345\274\217", nullptr));
         Button_Recognize->setText(QApplication::translate("FormImageAnalyzerClass", "\350\257\206\345\210\253\350\241\250\346\240\274", nullptr));
+        Button_Rerecognize->setText(QApplication::translate("FormImageAnalyzerClass", "\351\207\215\346\226\260\350\257\206\345\210\253", nullptr));
         Button_AddData->setText(QApplication::translate("FormImageAnalyzerClass", "\346\267\273\345\212\240\346\225\260\346\215\256", nullptr));
         Button_SaveData->setText(QApplication::translate("FormImageAnalyzerClass", "\345\257\274\345\207\272\346\225\260\346\215\256", nullptr));
-        Button_Rerecognize->setText(QApplication::translate("FormImageAnalyzerClass", "\351\207\215\346\226\260\350\257\206\345\210\253", nullptr));
         Button_ExcelRead->setText(QApplication::translate("FormImageAnalyzerClass", "\347\273\223\346\236\234\350\275\254\345\214\226", nullptr));
         groupBox_2->setTitle(QApplication::translate("FormImageAnalyzerClass", "\350\241\250\346\240\274\345\233\276\345\203\217", nullptr));
         Button_ZoomIn->setText(QApplication::translate("FormImageAnalyzerClass", "\346\224\276\345\244\247", nullptr));
