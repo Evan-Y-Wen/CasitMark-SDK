@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
 //加载系统样式表单
 void ChangeStyle()
 {
+	//tode:
 	/*
 QFile styleFile(":/QssFile/Resources/style/blue.qss");
 styleFile.open(QFile::ReadOnly);
