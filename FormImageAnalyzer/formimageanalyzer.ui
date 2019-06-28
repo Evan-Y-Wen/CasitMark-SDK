@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FormImageAnalyzerClass</class>
+ <widget class="QMainWindow" name="FormImageAnalyzerClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1178</width>
+    <height>824</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>FormImageAnalyzer</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QFrame" name="centra_frame">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QFrame" name="frame">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>80</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>80</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::WinPanel</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="spacing">
+           <number>50</number>
+          </property>
+          <item>
+           <widget class="QToolButton" name="Button_OpenPattern">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>切换模式</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="Button_Recognize">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>识别表格</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="Button_AddData">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>添加数据</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="Button_SaveData">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>导出数据</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="Button_Rerecognize">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>重新识别</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="Button_ExcelRead">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>结果转化</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSplitter" name="splitter">
+         <property name="minimumSize">
+          <size>
+           <width>1140</width>
+           <height>700</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <widget class="QFrame" name="frame_3">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Panel</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_7">
+           <item>
+            <widget class="QGroupBox" name="groupBox_2">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="title">
+              <string>表格图像</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_4">
+              <item row="0" column="0">
+               <widget class="QFrame" name="frame_2">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_3">
+                 <item row="1" column="0">
+                  <widget class="QFrame" name="frame_4">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_3">
+                    <property name="spacing">
+                     <number>50</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>2</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>2</number>
+                    </property>
+                    <item>
+                     <widget class="QToolButton" name="Button_ZoomIn">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="text">
+                       <string>放大</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QToolButton" name="Button_ZoomOut">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="text">
+                       <string>缩小</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QToolButton" name="Button_Recover">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="text">
+                       <string>还原</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QToolButton" name="Button_Clockwise">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="text">
+                       <string>逆时针旋转</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QToolButton" name="Button_Negative">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="text">
+                       <string>顺时针旋转</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="MyGraphicsView" name="graphicsView"/>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QFrame" name="frame_1">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>300</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Panel</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <widget class="QGroupBox" name="groupBox_ListTitle">
+             <property name="title">
+              <string>总识别表格数：0张</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_8">
+              <item>
+               <widget class="QScrollArea" name="scrollArea_2">
+                <property name="widgetResizable">
+                 <bool>true</bool>
+                </property>
+                <widget class="QWidget" name="scrollAreaWidgetContents_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>326</width>
+                   <height>644</height>
+                  </rect>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_2">
+                  <item row="0" column="0">
+                   <widget class="QTableView" name="tableView"/>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>MyGraphicsView</class>
+   <extends>QGraphicsView</extends>
+   <header>mygraphicsview.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="formimageanalyzer.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>Button_OpenPattern</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>FormImageAnalyzerClass</receiver>
+   <slot>OnButtonOpenPatten()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>115</x>
+     <y>72</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>149</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button_ZoomIn</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>FormImageAnalyzerClass</receiver>
+   <slot>OnButtonZoomIn()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>81</x>
+     <y>751</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>0</x>
+     <y>760</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button_ZoomOut</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>FormImageAnalyzerClass</receiver>
+   <slot>OnButtonZoomOut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>169</x>
+     <y>756</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>136</x>
+     <y>853</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button_Recover</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>FormImageAnalyzerClass</receiver>
+   <slot>OnButtonRecover()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>268</x>
+     <y>748</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>255</x>
+     <y>855</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button_Clockwise</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>FormImageAnalyzerClass</receiver>
+   <slot>OnButtonNegativeRotate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>615</x>
+     <y>770</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>649</x>
+     <y>878</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button_Negative</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>FormImageAnalyzerClass</receiver>
+   <slot>OnButtonClockwiseRotate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>744</x>
+     <y>770</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>775</x>
+     <y>857</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button_AddData</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>FormImageAnalyzerClass</receiver>
+   <slot>OnButtonAddData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>563</x>
+     <y>85</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>668</x>
+     <y>-108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button_Recognize</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>FormImageAnalyzerClass</receiver>
+   <slot>OnButtonRecognize()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>296</x>
+     <y>66</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>295</x>
+     <y>-102</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button_SaveData</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>FormImageAnalyzerClass</receiver>
+   <slot>OnButtonSaveData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>700</x>
+     <y>75</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>696</x>
+     <y>-30</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>OnButtonOpenPatten()</slot>
+  <slot>OnButtonZoomIn()</slot>
+  <slot>OnButtonZoomOut()</slot>
+  <slot>OnButtonRecover()</slot>
+  <slot>OnButtonClockwiseRotate()</slot>
+  <slot>OnButtonNegativeRotate()</slot>
+  <slot>OnButtonAddData()</slot>
+  <slot>OnButtonRecognize()</slot>
+  <slot>OnButtonSaveData()</slot>
+ </slots>
+</ui>

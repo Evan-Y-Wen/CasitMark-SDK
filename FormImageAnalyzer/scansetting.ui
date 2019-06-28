@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ScanSetting</class>
+ <widget class="QDialog" name="ScanSetting">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>扫描设置</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="font">
+      <font>
+       <family>Agency FB</family>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
+     <property name="title">
+      <string>图像DPI</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="QComboBox" name="comboBox_ImageDPI">
+        <property name="sizeAdjustPolicy">
+         <enum>QComboBox::AdjustToContents</enum>
+        </property>
+        <item>
+         <property name="text">
+          <string>200</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>300</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>600</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="font">
+      <font>
+       <family>Agency FB</family>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
+     <property name="title">
+      <string>图像类型</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0" rowspan="2">
+       <widget class="QRadioButton" name="radioButton_TypeColor">
+        <property name="text">
+         <string>彩色</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" rowspan="2">
+       <widget class="QRadioButton" name="radioButton_TypeGray">
+        <property name="text">
+         <string>灰度</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QRadioButton" name="radioButton_LightWhite">
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>白色光源</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QRadioButton" name="radioButton_LightRed">
+        <property name="text">
+         <string>红色光源</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QRadioButton" name="radioButton_LightGreen">
+        <property name="text">
+         <string>绿色光源</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QRadioButton" name="radioButton_LightBlue">
+        <property name="text">
+         <string>蓝色光源</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="checkBox_DoubleCheck">
+     <property name="font">
+      <font>
+       <family>Agency FB</family>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>开启重张检测</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="leftMargin">
+      <number>20</number>
+     </property>
+     <property name="rightMargin">
+      <number>20</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="pushButton_Confirm">
+       <property name="font">
+        <font>
+         <family>Agency FB</family>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>确认</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Cancel">
+       <property name="font">
+        <font>
+         <family>Agency FB</family>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>取消</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>radioButton_TypeColor</sender>
+   <signal>clicked()</signal>
+   <receiver>ScanSetting</receiver>
+   <slot>ImageTypeChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>53</x>
+     <y>162</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>695</x>
+     <y>204</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_TypeGray</sender>
+   <signal>clicked()</signal>
+   <receiver>ScanSetting</receiver>
+   <slot>ImageTypeChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>71</x>
+     <y>231</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>677</x>
+     <y>267</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_Confirm</sender>
+   <signal>clicked()</signal>
+   <receiver>ScanSetting</receiver>
+   <slot>Confirm()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>148</x>
+     <y>355</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>761</x>
+     <y>566</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_Cancel</sender>
+   <signal>clicked()</signal>
+   <receiver>ScanSetting</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>423</x>
+     <y>346</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>870</x>
+     <y>433</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>ImageTypeChanged()</slot>
+  <slot>Confirm()</slot>
+ </slots>
+</ui>

@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/FormPatternMaker"/>
+    <qresource prefix="/QssFile">
+        <file>Resources/style/blue.qss</file>
+    </qresource>
+    <qresource prefix="/Images">
+        <file>Resources/Images/New.png</file>
+    </qresource>
+</RCC>

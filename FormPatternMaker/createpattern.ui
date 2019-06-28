@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CreatePattern</class>
+ <widget class="QWidget" name="CreatePattern">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>307</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>CreatePattern</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>30</y>
+     <width>381</width>
+     <height>211</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>图标</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>20</y>
+      <width>51</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>模式名称</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="TB_PatternName">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>19</y>
+      <width>231</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>请输入模式名称：</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>361</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QRadioButton" name="CB_Bihe">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>定位方式一</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="CB_QR">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>定位方式二</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="LB_Message">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>90</y>
+       <width>251</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Tips</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QToolButton" name="BTN_Submit">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>250</y>
+     <width>101</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;黑体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>确定</string>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>BTN_Submit</sender>
+   <signal>clicked()</signal>
+   <receiver>CreatePattern</receiver>
+   <slot>BTN_Submit_Click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>317</x>
+     <y>271</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>218</x>
+     <y>284</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CB_Bihe</sender>
+   <signal>clicked()</signal>
+   <receiver>CreatePattern</receiver>
+   <slot>CB_Bihe_Click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>35</x>
+     <y>135</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>35</x>
+     <y>275</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CB_QR</sender>
+   <signal>clicked()</signal>
+   <receiver>CreatePattern</receiver>
+   <slot>CB_QR_Click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>58</x>
+     <y>170</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>66</x>
+     <y>285</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>BTN_Submit_Click()</slot>
+  <slot>CB_Bihe_Click()</slot>
+  <slot>CB_QR_Click()</slot>
+ </slots>
+</ui>

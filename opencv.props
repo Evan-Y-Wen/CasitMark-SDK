@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <IncludePath>G:\Qt\Qt5.12.1\User\CasitMark SDK\packages\Opencv\opencv2;G:\Qt\Qt5.12.1\User\CasitMark SDK\packages\Opencv\opencv;G:\Qt\Qt5.12.1\User\CasitMark SDK\packages\Opencv\include;$(IncludePath)</IncludePath>
+    <LibraryPath>G:\Qt\Qt5.12.1\User\CasitMark SDK\packages\Opencv\x64\bin;G:\Qt\Qt5.12.1\User\CasitMark SDK\packages\Opencv\x64\lib;$(LibraryPath)</LibraryPath>
+    <ReferencePath>G:\Qt\Qt5.12.1\User\CasitMark SDK\packages\Opencv\x64\bin;G:\Qt\Qt5.12.1\User\CasitMark SDK\packages\Opencv\x64\lib;$(ReferencePath)</ReferencePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>

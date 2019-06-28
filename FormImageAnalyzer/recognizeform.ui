@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RecognizeForm</class>
+ <widget class="QDialog" name="RecognizeForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>682</width>
+    <height>481</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>RecognizeForm</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_5">
+   <item row="0" column="0">
+    <widget class="QFrame" name="frame">
+     <property name="frameShape">
+      <enum>QFrame::Panel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QTabWidget" name="tabWidget">
+        <property name="styleSheet">
+         <string notr="true">font: 14pt &quot;宋体&quot;;</string>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="tab1">
+         <attribute name="title">
+          <string>专用设备</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <property name="verticalSpacing">
+           <number>20</number>
+          </property>
+          <item row="4" column="1">
+           <widget class="QPushButton" name="pushButton_StartScan">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>开始扫描</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QLabel" name="Label_Label_ImageNumTitle">
+            <property name="text">
+             <string>阅读图像计数：</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="2">
+           <widget class="QLabel" name="Label_ImageNum">
+            <property name="text">
+             <string>999999</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="3">
+           <widget class="QPushButton" name="pushButton_StopScan">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>停止扫描</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="3">
+           <widget class="QPushButton" name="pushButton_Close">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>关闭阅读仪</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QPushButton" name="pushButton_Open">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>打开阅读仪</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" colspan="3">
+           <widget class="QFrame" name="frame_Setting">
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_6">
+             <item row="2" column="1">
+              <widget class="QGroupBox" name="groupBox_ImageType">
+               <property name="font">
+                <font>
+                 <family>宋体</family>
+                 <pointsize>14</pointsize>
+                 <weight>50</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="title">
+                <string>图像设置</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_3">
+                <property name="verticalSpacing">
+                 <number>20</number>
+                </property>
+                <item row="8" column="0">
+                 <widget class="QLabel" name="label_13">
+                  <property name="text">
+                   <string>图像类型：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="0">
+                 <widget class="QLabel" name="label_11">
+                  <property name="text">
+                   <string>图像DPI：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="10" column="0">
+                 <widget class="QLabel" name="label_14">
+                  <property name="text">
+                   <string>其他功能：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="1">
+                 <widget class="QLabel" name="label_ImageDPI">
+                  <property name="text">
+                   <string>0000000000</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="8" column="1">
+                 <widget class="QLabel" name="label_ImageType">
+                  <property name="text">
+                   <string>彩色</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="10" column="1">
+                 <widget class="QLabel" name="label_OtherFun">
+                  <property name="text">
+                   <string>开启重张检测</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="11" column="1">
+                 <widget class="QPushButton" name="pushButton_Setting">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>设置</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab2">
+         <attribute name="title">
+          <string>图像文件</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="1">
+           <spacer name="verticalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="Button_OpenDirs">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>250</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>从文件夹导入图片文件</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="2" column="1">
+           <widget class="QPushButton" name="Button_OpenFiles">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>250</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>从计算机导入图像文件</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" rowspan="2">
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="2" rowspan="2">
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="maximumSize">
+         <size>
+          <width>224</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 14pt &quot;宋体&quot;;</string>
+        </property>
+        <property name="title">
+         <string>识别</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <property name="verticalSpacing">
+          <number>20</number>
+         </property>
+         <item row="3" column="1">
+          <widget class="QLabel" name="Label_ReadCount">
+           <property name="styleSheet">
+            <string notr="true">font:20pt &quot;宋体&quot;;</string>
+           </property>
+           <property name="text">
+            <string>XXXXXX</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0" colspan="2">
+          <widget class="QCheckBox" name="CheckBox_Rotate90">
+           <property name="text">
+            <string>被识别图像旋转90度</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>已有图像数：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0" colspan="2">
+          <widget class="QPushButton" name="Button_RecognizeControl">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>80</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>启动识别</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="Label_TotalCount">
+           <property name="styleSheet">
+            <string notr="true">font:20pt &quot;宋体&quot;;</string>
+           </property>
+           <property name="text">
+            <string>XXXXXX</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLineEdit" name="TextBox_BinarizeThreshold">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>识别图像数：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0" colspan="2">
+          <widget class="QCheckBox" name="CheckBox_AutoFilterWhitePage">
+           <property name="text">
+            <string>自动过滤白图像</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <spacer name="verticalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_7">
+           <property name="text">
+            <string>二值化阈值：</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton_Setting</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>RecognizeForm</receiver>
+   <slot>Setting()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>241</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-205</x>
+     <y>206</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_Open</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>RecognizeForm</receiver>
+   <slot>OpenDevice()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>103</x>
+     <y>308</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-180</x>
+     <y>313</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_Close</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>RecognizeForm</receiver>
+   <slot>CloseDeivce()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>367</x>
+     <y>305</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-70</x>
+     <y>269</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_StartScan</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>RecognizeForm</receiver>
+   <slot>StartScan()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>94</x>
+     <y>373</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-167</x>
+     <y>374</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_StopScan</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>RecognizeForm</receiver>
+   <slot>StopScan()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>335</x>
+     <y>370</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-228</x>
+     <y>409</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button_RecognizeControl</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>RecognizeForm</receiver>
+   <slot>Button_RecognizeControl_Click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>543</x>
+     <y>415</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>540</x>
+     <y>600</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CheckBox_AutoFilterWhitePage</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>RecognizeForm</receiver>
+   <slot>CheckBox_AutoFilterWhitePage_Click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>503</x>
+     <y>341</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>452</x>
+     <y>558</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CheckBox_Rotate90</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>RecognizeForm</receiver>
+   <slot>CheckBox_Rotate90_Click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>555</x>
+     <y>296</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>576</x>
+     <y>563</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button_OpenDirs</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>RecognizeForm</receiver>
+   <slot>Button_OpenDirs_Click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>213</x>
+     <y>215</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>172</x>
+     <y>608</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button_OpenFiles</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>RecognizeForm</receiver>
+   <slot>Button_OpenFiles_Click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>275</x>
+     <y>278</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>290</x>
+     <y>768</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>Setting()</slot>
+  <slot>OpenDevice()</slot>
+  <slot>StartScan()</slot>
+  <slot>StopScan()</slot>
+  <slot>CloseDeivce()</slot>
+  <slot>Button_RecognizeControl_Click()</slot>
+  <slot>CheckBox_Rotate90_Click()</slot>
+  <slot>CheckBox_AutoFilterWhitePage_Click()</slot>
+  <slot>Button_OpenDirs_Click()</slot>
+  <slot>Button_OpenFiles_Click()</slot>
+ </slots>
+</ui>

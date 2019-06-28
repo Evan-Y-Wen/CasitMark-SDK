@@ -1,0 +1,120 @@
+/*  
+* Author :  Zhangqi
+*
+* Date :  2019-4
+*
+* Description :  blue
+*
+/************************************* 设置MainWindow样式 *************************************/
+QMainWindow{
+    font-family: Microsoft YaHei Light;
+    font: 'FangSong_GB2312';
+    font-size: 12px;
+}
+/************************************* 设置Frame样式 *************************************/
+QFrame{
+    font-family: Microsoft YaHei Light;
+    background-color: white;
+    font: 'FangSong_GB2312';
+    font-size: 12px;
+}
+
+QFrame{
+     background-color:white;/*背景色*/
+}
+
+QFrame[objectName='frameMuneBar']{
+     background-color: #0e8fe3;
+}
+
+/*****************************设置Label Text Combobox样式******************************/
+QLabel#label_Title{
+    font-size:18px;
+    font:bold 'Microsoft YaHei';
+    color:white;
+    background-color: transparent;
+}
+
+QLineEdit{
+    height:21px;
+    border-top:1px solid #333333;
+    border-left:1px solid #333333;
+    border-right:1px solid #333333;
+    border-bottom:1px solid #333333;
+    font:'Microsoft YaHei';
+    font-size:14px;
+    color:#333333;
+    background-color: white;
+}
+
+QComboBox:down-arrow{
+    image:url(:/res/images/ComboboxList.png);
+}
+
+QComboBox:drop-down{
+    border:1px;;
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width:15px;
+    border-left-width:1px;
+    border-left-color:red;
+    border-left-style: solid #5D8B9E;
+    border-top-right-radius:3px;
+    border-bottom-right-radius:3px;
+}
+
+QComboBox:QAbstractItemView:item{
+    height:40px;
+}
+
+QComboBox:down-arrow:pressed {
+    border: 2px solid #5D8B9E;
+    top: 1px;
+    left: 1px;
+    background: #5D8B9E;/*transparent;*/
+}
+
+QTextEdit{
+    border:1px solid #333333;
+    font:'Microsoft YaHei';
+    font-size:12px;
+    color:#333333;
+    background-color: white;
+}
+
+QCheckBox{
+    spacing:2px;
+    height:17px;
+    background-color: transparent;
+}
+
+/*定义选择框的大小*/
+QCheckBox:indicator{
+    height:17px;
+    width:17px;
+}
+
+/*****************************设置Button样式******************************/
+QToolButton{
+    height:27px;
+    width:80px;
+    background-color:#0e8fe3;
+    border: 0px solid #7C7C7C;
+    color:white;
+    border-radius:5px;
+}
+QToolButton:hover{
+    background-color: #023967;
+    border-radius:5px;
+    border: 0px solid #3C80B1;
+}
+QToolButton:pressed{
+    background-color: #023967;
+    border-radius:5px;
+    border: 0px solid #5F92B2;
+}
+
+QComboBox{
+    border:1px solid #333333;
+    background-color: white;
+}
