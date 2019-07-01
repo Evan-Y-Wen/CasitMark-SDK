@@ -409,8 +409,8 @@
    <slot>OnButtonZoomOut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>169</x>
-     <y>756</y>
+     <x>239</x>
+     <y>770</y>
     </hint>
     <hint type="destinationlabel">
      <x>136</x>
@@ -425,8 +425,8 @@
    <slot>OnButtonRecover()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>268</x>
-     <y>748</y>
+     <x>354</x>
+     <y>770</y>
     </hint>
     <hint type="destinationlabel">
      <x>255</x>
@@ -473,8 +473,8 @@
    <slot>OnButtonAddData()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>563</x>
-     <y>85</y>
+     <x>758</x>
+     <y>87</y>
     </hint>
     <hint type="destinationlabel">
      <x>668</x>
@@ -505,12 +505,28 @@
    <slot>OnButtonSaveData()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>700</x>
-     <y>75</y>
+     <x>952</x>
+     <y>87</y>
     </hint>
     <hint type="destinationlabel">
      <x>696</x>
      <y>-30</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button_Rerecognize</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>FormImageAnalyzerClass</receiver>
+   <slot>OnButtonReRecognize()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>502</x>
+     <y>71</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>518</x>
+     <y>-15</y>
     </hint>
    </hints>
   </connection>
@@ -525,5 +541,6 @@
   <slot>OnButtonAddData()</slot>
   <slot>OnButtonRecognize()</slot>
   <slot>OnButtonSaveData()</slot>
+  <slot>OnButtonReRecognize()</slot>
  </slots>
 </ui>

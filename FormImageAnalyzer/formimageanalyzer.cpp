@@ -238,6 +238,21 @@ void FormImageAnalyzer::OnButtonRecognize()
 
 
 /***************************************
+*函数功能：重新识别表格按钮槽函数
+*输入：
+*	void
+*输出：
+*	void
+*作者：JZQ
+*时间版本：2019-07-01-V1.0
+***************************************/
+void FormImageAnalyzer::OnButtonReRecognize()
+{
+	OnButtonRecognize();
+}
+
+
+/***************************************
 *函数功能：添加数据按钮槽函数
 *输入：
 *	void

@@ -27,7 +27,7 @@ RecognizeForm::RecognizeForm(AppConfig * appConfig, QString *appExeFolder, QWidg
 	ui.pushButton_StartScan->setEnabled(false);
 	ui.pushButton_StopScan->setEnabled(false);
 	ui.pushButton_Setting->setEnabled(true);
-	ui.pushButton_Save->setEnabled(false);//todo:是否还需要这个按钮？
+	ui.pushButton_Save->setEnabled(false);//todo:是否还需要这个按钮？SaveImage()这个槽函数没做任何事。
 
 	ui.CheckBox_Rotate90->setChecked(_mAppConfig->ImageRotate90);
 	ui.CheckBox_AutoFilterWhitePage->setChecked(_mAppConfig->IsAutoFilterWhite);
@@ -251,7 +251,7 @@ void RecognizeForm::Setting()
 *时间版本：2019-06-26-V1.0
 ***************************************/
 void RecognizeForm::SaveImage()
-{//图像在图像数据采集到响应槽中已经保存了
+{//todo:图像在图像数据采集到响应槽中已经保存了
 	/*
 	QString dir = QFileDialog::getExistingDirectory(this, u8"保存到...");
 	if (!dir.isEmpty())
@@ -365,11 +365,12 @@ void RecognizeForm::OnDeviceImageGenerated(uchar * fImgBuf, int fBufLen, uchar *
 	}
 
 	_imageIndex++;
-	//todo：这里需要重写，和原来的代码不一致，我的程序里只有一张图片。先询问一下温师兄。
+	//todo：这里需要重写，和原来的代码不一致，该程序里只有一张图片。
 	QString imgPrefix = u8"图像" + QString::number(_imageIndex);
 	ui.label_ReadCount->setText(QString::number(_imageIndex));
 
-	//判断正反面,若是正面，则为0的像素点会比反面少、todo:白色像素点是否是0
+	//todo:这里查看一下fImgBuf、bImgBuf的值
+	//判断正反面,若是正面，则为0的像素点会比反面少、todo:白色像素点是否是0？
 	int fImgBufCount = 0;
 	int bImgBufCount = 0;
 	uchar * ImageData = nullptr;

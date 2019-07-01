@@ -301,6 +301,7 @@ public:
         QObject::connect(Button_AddData, SIGNAL(clicked(bool)), FormImageAnalyzerClass, SLOT(OnButtonAddData()));
         QObject::connect(Button_Recognize, SIGNAL(clicked(bool)), FormImageAnalyzerClass, SLOT(OnButtonRecognize()));
         QObject::connect(Button_SaveData, SIGNAL(clicked(bool)), FormImageAnalyzerClass, SLOT(OnButtonSaveData()));
+        QObject::connect(Button_Rerecognize, SIGNAL(clicked(bool)), FormImageAnalyzerClass, SLOT(OnButtonReRecognize()));
 
         QMetaObject::connectSlotsByName(FormImageAnalyzerClass);
     } // setupUi

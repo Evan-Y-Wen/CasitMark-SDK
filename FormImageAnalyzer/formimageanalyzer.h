@@ -46,6 +46,7 @@ public slots:
 	//¹¤¾ßÀ¸°´Å¥
 	void OnButtonOpenPatten();
 	void OnButtonRecognize();
+	void OnButtonReRecognize();
 	void OnButtonAddData();
 	void OnButtonSaveData();
 
