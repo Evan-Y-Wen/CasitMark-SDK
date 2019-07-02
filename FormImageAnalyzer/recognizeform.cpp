@@ -369,41 +369,56 @@ void RecognizeForm::OnDeviceImageGenerated(uchar * fImgBuf, int fBufLen, uchar *
 	QString imgPrefix = u8"图像" + QString::number(_imageIndex);
 	ui.label_ReadCount->setText(QString::number(_imageIndex));
 
-	//todo:这里查看一下fImgBuf、bImgBuf的值
-	//判断正反面,若是正面，则为0的像素点会比反面少、todo:白色像素点是否是0？
-	int fImgBufCount = 0;
-	int bImgBufCount = 0;
-	uchar * ImageData = nullptr;
-	int ImageDataLen = 0;
-	for (int i = 0; i < fBufLen || i < bBufLen; ++i)
-	{
-		if (fImgBuf[i] == '0')
-		{
-			fImgBufCount++;
-		}
-		if (bImgBuf[i] == '0')
-		{
-			bImgBufCount++;
-		}
-	}
-	if (fImgBufCount <= bImgBufCount)
-	{
-		ImageData = fImgBuf;// fImgBuf为正面
-		ImageDataLen = fBufLen;
-	}
-	else
-	{
-		ImageData = bImgBuf;// bImgBuf为正面
-		ImageDataLen = bBufLen;
-	}
+	////todo:这里查看一下fImgBuf、bImgBuf的值
+	////判断正反面,若是正面，则为0的像素点会比反面少、todo:白色像素点是否是0？
+	//int fImgBufCount = 0;
+	//int bImgBufCount = 0;
+	//uchar * ImageData = nullptr;
+	//int ImageDataLen = 0;
+	//for (int i = 0; i < fBufLen || i < bBufLen; ++i)
+	//{
+	//	if (fImgBuf[i] == '0')
+	//	{
+	//		fImgBufCount++;
+	//	}
+	//	if (bImgBuf[i] == '0')
+	//	{
+	//		bImgBufCount++;
+	//	}
+	//}
+	//if (fImgBufCount <= bImgBufCount)
+	//{
+	//	ImageData = fImgBuf;// fImgBuf为正面
+	//	ImageDataLen = fBufLen;
+	//}
+	//else
+	//{
+	//	ImageData = bImgBuf;// bImgBuf为正面
+	//	ImageDataLen = bBufLen;
+	//}
+	//QString frontImgPath = _imageSaveFolder + "/" + imgPrefix + ".bmp";
+	//QFile fFile(frontImgPath);
+	//fFile.open(QIODevice::Truncate | QIODevice::WriteOnly);
+	//fFile.write((char*)ImageData, ImageDataLen);
+	//fFile.close();
+	//delete[] ImageData;
 
-	QString frontImgPath = _imageSaveFolder + "/" + imgPrefix + ".bmp";
+	//保存正面图片
+	QString frontImgPath = _imageSaveFolder + "/" + imgPrefix + "_F.bmp";
 	QFile fFile(frontImgPath);
 	fFile.open(QIODevice::Truncate | QIODevice::WriteOnly);
-	fFile.write((char*)ImageData, ImageDataLen);
+	fFile.write((char*)fImgBuf, fBufLen);
 	fFile.close();
-	delete[] ImageData;
-	//todo:ui.frame_Right->setImage(backImgPath);
+	delete[] fImgBuf;
+	//保存反面图片
+	QString backImgPath = _imageSaveFolder + "/" + imgPrefix + "_B.bmp";
+	QFile bFile(backImgPath);
+	bFile.open(QIODevice::Truncate | QIODevice::WriteOnly);
+	bFile.write((char*)bImgBuf, bBufLen);
+	bFile.close();
+	delete[] bImgBuf;
+	//放置图片到主界面，todo:由主界面显示，到主界面去处理。
+	//ui.frame_Right->setImage(backImgPath);
 
 	if (!ui.pushButton_Save->isEnabled())
 		ui.pushButton_Save->setEnabled(true);

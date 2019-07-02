@@ -24,11 +24,11 @@ FormImageAnalyzer::FormImageAnalyzer(QWidget *parent)
 	_mSelectionModel = nullptr;
 
 	//控件配置初始化
-
+	ui.splitter->setStretchFactor(0, 5);//设置两个分割窗口的比例为5:2
+	ui.splitter->setStretchFactor(1, 2);
 
 	//第一次运行界面时的初始化
 	OnButtonOpenPatten();//载入图片_mPixmap，并初始化_mPixItem
-
 }
 
 FormImageAnalyzer::~FormImageAnalyzer()
@@ -316,7 +316,7 @@ void FormImageAnalyzer::OnButtonAddData()
 		}
 	}
 
-	ui.groupBox_ListTitle->setTitle(QStringLiteral("总识别表格数：") + QString::number(_mModelRow) + QStringLiteral("张"));
+	ui.tabWidget->setTabText(0, (QStringLiteral("总识别表格数：%1张").arg(_mModelRow)));
 }
 
 

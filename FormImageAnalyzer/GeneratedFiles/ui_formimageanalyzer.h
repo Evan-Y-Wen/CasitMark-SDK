@@ -16,10 +16,12 @@
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QListView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSplitter>
+#include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QVBoxLayout>
@@ -32,9 +34,9 @@ class Ui_FormImageAnalyzerClass
 {
 public:
     QWidget *centralWidget;
-    QGridLayout *gridLayout;
+    QGridLayout *gridLayout_8;
     QFrame *centra_frame;
-    QVBoxLayout *verticalLayout;
+    QGridLayout *gridLayout;
     QFrame *frame;
     QHBoxLayout *horizontalLayout_2;
     QToolButton *Button_OpenPattern;
@@ -46,10 +48,11 @@ public:
     QSplitter *splitter;
     QFrame *frame_3;
     QVBoxLayout *verticalLayout_7;
-    QGroupBox *groupBox_2;
+    QGroupBox *groupBox_Image;
     QGridLayout *gridLayout_4;
     QFrame *frame_2;
     QGridLayout *gridLayout_3;
+    MyGraphicsView *graphicsView;
     QFrame *frame_4;
     QHBoxLayout *horizontalLayout_3;
     QToolButton *Button_ZoomIn;
@@ -58,15 +61,21 @@ public:
     QSpacerItem *horizontalSpacer;
     QToolButton *Button_Clockwise;
     QToolButton *Button_Negative;
-    MyGraphicsView *graphicsView;
     QFrame *frame_1;
-    QVBoxLayout *verticalLayout_6;
-    QGroupBox *groupBox_ListTitle;
-    QVBoxLayout *verticalLayout_8;
+    QGridLayout *gridLayout_5;
+    QTabWidget *tabWidget;
+    QWidget *tab_tableView;
+    QGridLayout *gridLayout_6;
     QScrollArea *scrollArea_2;
     QWidget *scrollAreaWidgetContents_2;
     QGridLayout *gridLayout_2;
     QTableView *tableView;
+    QWidget *tab_listView;
+    QGridLayout *gridLayout_9;
+    QScrollArea *scrollArea_3;
+    QWidget *scrollAreaWidgetContents_3;
+    QGridLayout *gridLayout_7;
+    QListView *listView;
 
     void setupUi(QMainWindow *FormImageAnalyzerClass)
     {
@@ -75,18 +84,18 @@ public:
         FormImageAnalyzerClass->resize(1178, 824);
         centralWidget = new QWidget(FormImageAnalyzerClass);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
-        gridLayout = new QGridLayout(centralWidget);
+        gridLayout_8 = new QGridLayout(centralWidget);
+        gridLayout_8->setSpacing(6);
+        gridLayout_8->setContentsMargins(11, 11, 11, 11);
+        gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
+        centra_frame = new QFrame(centralWidget);
+        centra_frame->setObjectName(QString::fromUtf8("centra_frame"));
+        centra_frame->setFrameShape(QFrame::WinPanel);
+        centra_frame->setFrameShadow(QFrame::Plain);
+        gridLayout = new QGridLayout(centra_frame);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        centra_frame = new QFrame(centralWidget);
-        centra_frame->setObjectName(QString::fromUtf8("centra_frame"));
-        centra_frame->setFrameShape(QFrame::StyledPanel);
-        centra_frame->setFrameShadow(QFrame::Raised);
-        verticalLayout = new QVBoxLayout(centra_frame);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         frame = new QFrame(centra_frame);
         frame->setObjectName(QString::fromUtf8("frame"));
         frame->setMinimumSize(QSize(0, 80));
@@ -143,7 +152,7 @@ public:
         horizontalLayout_2->addWidget(Button_ExcelRead);
 
 
-        verticalLayout->addWidget(frame);
+        gridLayout->addWidget(frame, 0, 0, 1, 1);
 
         splitter = new QSplitter(centra_frame);
         splitter->setObjectName(QString::fromUtf8("splitter"));
@@ -163,24 +172,36 @@ public:
         verticalLayout_7->setSpacing(6);
         verticalLayout_7->setContentsMargins(11, 11, 11, 11);
         verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
-        groupBox_2 = new QGroupBox(frame_3);
-        groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        sizePolicy1.setHeightForWidth(groupBox_2->sizePolicy().hasHeightForWidth());
-        groupBox_2->setSizePolicy(sizePolicy1);
-        gridLayout_4 = new QGridLayout(groupBox_2);
+        groupBox_Image = new QGroupBox(frame_3);
+        groupBox_Image->setObjectName(QString::fromUtf8("groupBox_Image"));
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(groupBox_Image->sizePolicy().hasHeightForWidth());
+        groupBox_Image->setSizePolicy(sizePolicy2);
+        gridLayout_4 = new QGridLayout(groupBox_Image);
         gridLayout_4->setSpacing(6);
         gridLayout_4->setContentsMargins(11, 11, 11, 11);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
-        frame_2 = new QFrame(groupBox_2);
+        frame_2 = new QFrame(groupBox_Image);
         frame_2->setObjectName(QString::fromUtf8("frame_2"));
+        sizePolicy2.setHeightForWidth(frame_2->sizePolicy().hasHeightForWidth());
+        frame_2->setSizePolicy(sizePolicy2);
         frame_2->setFrameShape(QFrame::StyledPanel);
         frame_2->setFrameShadow(QFrame::Plain);
         gridLayout_3 = new QGridLayout(frame_2);
         gridLayout_3->setSpacing(6);
         gridLayout_3->setContentsMargins(11, 11, 11, 11);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        graphicsView = new MyGraphicsView(frame_2);
+        graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
+
+        gridLayout_3->addWidget(graphicsView, 0, 0, 1, 1);
+
         frame_4 = new QFrame(frame_2);
         frame_4->setObjectName(QString::fromUtf8("frame_4"));
+        sizePolicy2.setHeightForWidth(frame_4->sizePolicy().hasHeightForWidth());
+        frame_4->setSizePolicy(sizePolicy2);
         frame_4->setMinimumSize(QSize(0, 40));
         frame_4->setMaximumSize(QSize(16777215, 40));
         frame_4->setFrameShape(QFrame::StyledPanel);
@@ -231,63 +252,98 @@ public:
 
         gridLayout_3->addWidget(frame_4, 1, 0, 1, 1);
 
-        graphicsView = new MyGraphicsView(frame_2);
-        graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
-
-        gridLayout_3->addWidget(graphicsView, 0, 0, 1, 1);
-
 
         gridLayout_4->addWidget(frame_2, 0, 0, 1, 1);
 
 
-        verticalLayout_7->addWidget(groupBox_2);
+        verticalLayout_7->addWidget(groupBox_Image);
 
         splitter->addWidget(frame_3);
         frame_1 = new QFrame(splitter);
         frame_1->setObjectName(QString::fromUtf8("frame_1"));
-        sizePolicy.setHeightForWidth(frame_1->sizePolicy().hasHeightForWidth());
-        frame_1->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy3(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(frame_1->sizePolicy().hasHeightForWidth());
+        frame_1->setSizePolicy(sizePolicy3);
         frame_1->setMinimumSize(QSize(300, 0));
         frame_1->setStyleSheet(QString::fromUtf8("font: 14pt \"\345\256\213\344\275\223\";"));
         frame_1->setFrameShape(QFrame::Panel);
-        verticalLayout_6 = new QVBoxLayout(frame_1);
-        verticalLayout_6->setSpacing(6);
-        verticalLayout_6->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
-        groupBox_ListTitle = new QGroupBox(frame_1);
-        groupBox_ListTitle->setObjectName(QString::fromUtf8("groupBox_ListTitle"));
-        verticalLayout_8 = new QVBoxLayout(groupBox_ListTitle);
-        verticalLayout_8->setSpacing(6);
-        verticalLayout_8->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
-        scrollArea_2 = new QScrollArea(groupBox_ListTitle);
+        gridLayout_5 = new QGridLayout(frame_1);
+        gridLayout_5->setSpacing(6);
+        gridLayout_5->setContentsMargins(11, 11, 11, 11);
+        gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
+        tabWidget = new QTabWidget(frame_1);
+        tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
+        tabWidget->setStyleSheet(QString::fromUtf8("font: 14pt \"\345\256\213\344\275\223\";"));
+        tab_tableView = new QWidget();
+        tab_tableView->setObjectName(QString::fromUtf8("tab_tableView"));
+        gridLayout_6 = new QGridLayout(tab_tableView);
+        gridLayout_6->setSpacing(6);
+        gridLayout_6->setContentsMargins(11, 11, 11, 11);
+        gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
+        gridLayout_6->setVerticalSpacing(20);
+        scrollArea_2 = new QScrollArea(tab_tableView);
         scrollArea_2->setObjectName(QString::fromUtf8("scrollArea_2"));
+        sizePolicy3.setHeightForWidth(scrollArea_2->sizePolicy().hasHeightForWidth());
+        scrollArea_2->setSizePolicy(sizePolicy3);
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 276, 637));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 274, 609));
         gridLayout_2 = new QGridLayout(scrollAreaWidgetContents_2);
         gridLayout_2->setSpacing(6);
         gridLayout_2->setContentsMargins(11, 11, 11, 11);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         tableView = new QTableView(scrollAreaWidgetContents_2);
         tableView->setObjectName(QString::fromUtf8("tableView"));
+        sizePolicy3.setHeightForWidth(tableView->sizePolicy().hasHeightForWidth());
+        tableView->setSizePolicy(sizePolicy3);
 
         gridLayout_2->addWidget(tableView, 0, 0, 1, 1);
 
         scrollArea_2->setWidget(scrollAreaWidgetContents_2);
 
-        verticalLayout_8->addWidget(scrollArea_2);
+        gridLayout_6->addWidget(scrollArea_2, 0, 0, 1, 1);
 
+        tabWidget->addTab(tab_tableView, QString());
+        tab_listView = new QWidget();
+        tab_listView->setObjectName(QString::fromUtf8("tab_listView"));
+        gridLayout_9 = new QGridLayout(tab_listView);
+        gridLayout_9->setSpacing(6);
+        gridLayout_9->setContentsMargins(11, 11, 11, 11);
+        gridLayout_9->setObjectName(QString::fromUtf8("gridLayout_9"));
+        scrollArea_3 = new QScrollArea(tab_listView);
+        scrollArea_3->setObjectName(QString::fromUtf8("scrollArea_3"));
+        sizePolicy3.setHeightForWidth(scrollArea_3->sizePolicy().hasHeightForWidth());
+        scrollArea_3->setSizePolicy(sizePolicy3);
+        scrollArea_3->setWidgetResizable(true);
+        scrollAreaWidgetContents_3 = new QWidget();
+        scrollAreaWidgetContents_3->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_3"));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 254, 626));
+        gridLayout_7 = new QGridLayout(scrollAreaWidgetContents_3);
+        gridLayout_7->setSpacing(6);
+        gridLayout_7->setContentsMargins(11, 11, 11, 11);
+        gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
+        listView = new QListView(scrollAreaWidgetContents_3);
+        listView->setObjectName(QString::fromUtf8("listView"));
 
-        verticalLayout_6->addWidget(groupBox_ListTitle);
+        gridLayout_7->addWidget(listView, 0, 0, 1, 1);
+
+        scrollArea_3->setWidget(scrollAreaWidgetContents_3);
+
+        gridLayout_9->addWidget(scrollArea_3, 0, 0, 1, 1);
+
+        tabWidget->addTab(tab_listView, QString());
+
+        gridLayout_5->addWidget(tabWidget, 0, 1, 1, 1);
 
         splitter->addWidget(frame_1);
 
-        verticalLayout->addWidget(splitter);
+        gridLayout->addWidget(splitter, 1, 0, 1, 1);
 
 
-        gridLayout->addWidget(centra_frame, 0, 0, 1, 1);
+        gridLayout_8->addWidget(centra_frame, 0, 0, 1, 1);
 
         FormImageAnalyzerClass->setCentralWidget(centralWidget);
 
@@ -303,6 +359,9 @@ public:
         QObject::connect(Button_SaveData, SIGNAL(clicked(bool)), FormImageAnalyzerClass, SLOT(OnButtonSaveData()));
         QObject::connect(Button_Rerecognize, SIGNAL(clicked(bool)), FormImageAnalyzerClass, SLOT(OnButtonReRecognize()));
 
+        tabWidget->setCurrentIndex(0);
+
+
         QMetaObject::connectSlotsByName(FormImageAnalyzerClass);
     } // setupUi
 
@@ -315,13 +374,14 @@ public:
         Button_AddData->setText(QApplication::translate("FormImageAnalyzerClass", "\346\267\273\345\212\240\346\225\260\346\215\256", nullptr));
         Button_SaveData->setText(QApplication::translate("FormImageAnalyzerClass", "\345\257\274\345\207\272\346\225\260\346\215\256", nullptr));
         Button_ExcelRead->setText(QApplication::translate("FormImageAnalyzerClass", "\347\273\223\346\236\234\350\275\254\345\214\226", nullptr));
-        groupBox_2->setTitle(QApplication::translate("FormImageAnalyzerClass", "\350\241\250\346\240\274\345\233\276\345\203\217", nullptr));
+        groupBox_Image->setTitle(QApplication::translate("FormImageAnalyzerClass", "\350\241\250\346\240\274\345\233\276\345\203\217", nullptr));
         Button_ZoomIn->setText(QApplication::translate("FormImageAnalyzerClass", "\346\224\276\345\244\247", nullptr));
         Button_ZoomOut->setText(QApplication::translate("FormImageAnalyzerClass", "\347\274\251\345\260\217", nullptr));
         Button_Recover->setText(QApplication::translate("FormImageAnalyzerClass", "\350\277\230\345\216\237", nullptr));
         Button_Clockwise->setText(QApplication::translate("FormImageAnalyzerClass", "\351\200\206\346\227\266\351\222\210\346\227\213\350\275\254", nullptr));
         Button_Negative->setText(QApplication::translate("FormImageAnalyzerClass", "\351\241\272\346\227\266\351\222\210\346\227\213\350\275\254", nullptr));
-        groupBox_ListTitle->setTitle(QApplication::translate("FormImageAnalyzerClass", "\346\200\273\350\257\206\345\210\253\350\241\250\346\240\274\346\225\260\357\274\2320\345\274\240", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_tableView), QApplication::translate("FormImageAnalyzerClass", "\346\200\273\350\257\206\345\210\253\350\241\250\346\240\274\346\225\260\357\274\2320\345\274\240", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_listView), QApplication::translate("FormImageAnalyzerClass", "\346\250\241\345\274\217\347\273\223\346\236\204", nullptr));
     } // retranslateUi
 
 };

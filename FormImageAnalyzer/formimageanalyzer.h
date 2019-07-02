@@ -20,6 +20,7 @@
 #include <QStringList>
 #include <QVector>
 
+
 class FormImageAnalyzer : public QMainWindow
 {
 	Q_OBJECT
