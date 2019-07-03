@@ -44,7 +44,7 @@ public:
     QToolButton *Button_Rerecognize;
     QToolButton *Button_AddData;
     QToolButton *Button_SaveData;
-    QToolButton *Button_ExcelRead;
+    QToolButton *Button_ExcelResult;
     QSplitter *splitter;
     QFrame *frame_3;
     QVBoxLayout *verticalLayout_7;
@@ -81,7 +81,7 @@ public:
     {
         if (FormImageAnalyzerClass->objectName().isEmpty())
             FormImageAnalyzerClass->setObjectName(QString::fromUtf8("FormImageAnalyzerClass"));
-        FormImageAnalyzerClass->resize(1178, 824);
+        FormImageAnalyzerClass->resize(1180, 826);
         centralWidget = new QWidget(FormImageAnalyzerClass);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         gridLayout_8 = new QGridLayout(centralWidget);
@@ -144,12 +144,12 @@ public:
 
         horizontalLayout_2->addWidget(Button_SaveData);
 
-        Button_ExcelRead = new QToolButton(frame);
-        Button_ExcelRead->setObjectName(QString::fromUtf8("Button_ExcelRead"));
-        sizePolicy.setHeightForWidth(Button_ExcelRead->sizePolicy().hasHeightForWidth());
-        Button_ExcelRead->setSizePolicy(sizePolicy);
+        Button_ExcelResult = new QToolButton(frame);
+        Button_ExcelResult->setObjectName(QString::fromUtf8("Button_ExcelResult"));
+        sizePolicy.setHeightForWidth(Button_ExcelResult->sizePolicy().hasHeightForWidth());
+        Button_ExcelResult->setSizePolicy(sizePolicy);
 
-        horizontalLayout_2->addWidget(Button_ExcelRead);
+        horizontalLayout_2->addWidget(Button_ExcelResult);
 
 
         gridLayout->addWidget(frame, 0, 0, 1, 1);
@@ -290,7 +290,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 274, 609));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 275, 626));
         gridLayout_2 = new QGridLayout(scrollAreaWidgetContents_2);
         gridLayout_2->setSpacing(6);
         gridLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -320,7 +320,7 @@ public:
         scrollArea_3->setWidgetResizable(true);
         scrollAreaWidgetContents_3 = new QWidget();
         scrollAreaWidgetContents_3->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_3"));
-        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 254, 626));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 275, 626));
         gridLayout_7 = new QGridLayout(scrollAreaWidgetContents_3);
         gridLayout_7->setSpacing(6);
         gridLayout_7->setContentsMargins(11, 11, 11, 11);
@@ -358,6 +358,7 @@ public:
         QObject::connect(Button_Recognize, SIGNAL(clicked(bool)), FormImageAnalyzerClass, SLOT(OnButtonRecognize()));
         QObject::connect(Button_SaveData, SIGNAL(clicked(bool)), FormImageAnalyzerClass, SLOT(OnButtonSaveData()));
         QObject::connect(Button_Rerecognize, SIGNAL(clicked(bool)), FormImageAnalyzerClass, SLOT(OnButtonReRecognize()));
+        QObject::connect(Button_ExcelResult, SIGNAL(clicked(bool)), FormImageAnalyzerClass, SLOT(OnButtonExcelResult()));
 
         tabWidget->setCurrentIndex(0);
 
@@ -373,7 +374,7 @@ public:
         Button_Rerecognize->setText(QApplication::translate("FormImageAnalyzerClass", "\351\207\215\346\226\260\350\257\206\345\210\253", nullptr));
         Button_AddData->setText(QApplication::translate("FormImageAnalyzerClass", "\346\267\273\345\212\240\346\225\260\346\215\256", nullptr));
         Button_SaveData->setText(QApplication::translate("FormImageAnalyzerClass", "\345\257\274\345\207\272\346\225\260\346\215\256", nullptr));
-        Button_ExcelRead->setText(QApplication::translate("FormImageAnalyzerClass", "\347\273\223\346\236\234\350\275\254\345\214\226", nullptr));
+        Button_ExcelResult->setText(QApplication::translate("FormImageAnalyzerClass", "\347\273\223\346\236\234\350\275\254\345\214\226", nullptr));
         groupBox_Image->setTitle(QApplication::translate("FormImageAnalyzerClass", "\350\241\250\346\240\274\345\233\276\345\203\217", nullptr));
         Button_ZoomIn->setText(QApplication::translate("FormImageAnalyzerClass", "\346\224\276\345\244\247", nullptr));
         Button_ZoomOut->setText(QApplication::translate("FormImageAnalyzerClass", "\347\274\251\345\260\217", nullptr));

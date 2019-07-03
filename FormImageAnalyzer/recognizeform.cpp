@@ -27,7 +27,7 @@ RecognizeForm::RecognizeForm(AppConfig * appConfig, QString *appExeFolder, QWidg
 	ui.pushButton_StartScan->setEnabled(false);
 	ui.pushButton_StopScan->setEnabled(false);
 	ui.pushButton_Setting->setEnabled(true);
-	ui.pushButton_Save->setEnabled(false);//todo:是否还需要这个按钮？SaveImage()这个槽函数没做任何事。
+	ui.pushButton_Save->setEnabled(false);
 
 	ui.CheckBox_Rotate90->setChecked(_mAppConfig->ImageRotate90);
 	ui.CheckBox_AutoFilterWhitePage->setChecked(_mAppConfig->IsAutoFilterWhite);
@@ -251,21 +251,45 @@ void RecognizeForm::Setting()
 *时间版本：2019-06-26-V1.0
 ***************************************/
 void RecognizeForm::SaveImage()
-{//todo:图像在图像数据采集到响应槽中已经保存了
-	/*
-	QString dir = QFileDialog::getExistingDirectory(this, u8"保存到...");
-	if (!dir.isEmpty())
+{
+	try
 	{
-		QList< QListWidgetItem *> items = ui.listWidget_ImageList->selectedItems();
-		for (int i = 0; i < items.count(); ++i)
+		QDir oldDir(_imageSaveFolder);
+		QStringList ImageFormat;
+		QStringList FileNameList;//保存文件夹里的文件名
+		ImageFormat
+			<< "*.bmp" << "*.BMP"
+			<< "*.jpg" << "*.JPG"
+			<< "*.jpeg" << "*.JPEG"
+			<< "*.png" << "*.PNG"
+			<< "*.tif" << "*.TIF"
+			<< "*.tiff" << "*.TIFF";
+
+		QFileInfoList FileList = oldDir.entryInfoList(ImageFormat, QDir::Files, QDir::Unsorted);
+		foreach(QFileInfo file, FileList)
 		{
-			QListWidgetItem *item = items[i];
-			QString imgPrefix = item->text();
-			QString frontImgPath = _imageSaveFolder + "/" + imgPrefix + "_F.bmp";
-			QFile::copy(frontImgPath, dir + "/" + imgPrefix + "_F.bmp");
+			FileNameList.push_back(file.fileName());
+		}
+
+		//另存位置
+		QString newDirPath = QFileDialog::getExistingDirectory(this, QString(u8"保存到..."), QString());
+		if (newDirPath.isEmpty())
+		{
+			QMessageBox::information(this, QStringLiteral("取消保存"), QStringLiteral("取消图像保存！"));
+			return;
+		}
+		QDir newDir(newDirPath);
+		foreach(QFileInfo file, FileList)
+		{
+			qDebug() << FileNameList.back();
+			QFile::copy(_imageSaveFolder + "/" + FileNameList.back(), newDirPath + "/" + FileNameList.back());
+			FileNameList.pop_back();
 		}
 	}
-	*/
+	catch (const std::exception & ex)
+	{
+		QMessageBox::warning(this, QStringLiteral("保存失败！"), QString(ex.what()));
+	}
 }
 
 

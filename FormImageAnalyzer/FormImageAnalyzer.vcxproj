@@ -53,7 +53,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_XML_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_XML_LIB;XLSX_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>G:\Qt\Qt5.12.1\User\CasitMark SDK\3rdlib\libusb-1.0.22;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtXml;..\Cocer200Scan;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -71,7 +71,7 @@
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
       <IncludePath>G:\Qt\Qt5.12.1\User\CasitMark SDK\3rdlib\libusb-1.0.22;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtXml;..\Cocer200Scan;%(AdditionalIncludeDirectories)</IncludePath>
-      <Define>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_XML_LIB;%(PreprocessorDefinitions)</Define>
+      <Define>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_XML_LIB;XLSX_NO_LIB;%(PreprocessorDefinitions)</Define>
     </QtMoc>
     <QtUic>
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
@@ -115,12 +115,44 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="appconfig.cpp" />
+    <ClCompile Include="excelreader.cpp" />
     <ClCompile Include="formimageanalyzer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mygraphicsview.cpp" />
     <ClCompile Include="pixitem.cpp" />
     <ClCompile Include="recognizeform.cpp" />
     <ClCompile Include="scansetting.cpp" />
+    <ClCompile Include="xlsx\xlsxabstractooxmlfile.cpp" />
+    <ClCompile Include="xlsx\xlsxabstractsheet.cpp" />
+    <ClCompile Include="xlsx\xlsxcell.cpp" />
+    <ClCompile Include="xlsx\xlsxcellformula.cpp" />
+    <ClCompile Include="xlsx\xlsxcellrange.cpp" />
+    <ClCompile Include="xlsx\xlsxcellreference.cpp" />
+    <ClCompile Include="xlsx\xlsxchart.cpp" />
+    <ClCompile Include="xlsx\xlsxchartsheet.cpp" />
+    <ClCompile Include="xlsx\xlsxcolor.cpp" />
+    <ClCompile Include="xlsx\xlsxconditionalformatting.cpp" />
+    <ClCompile Include="xlsx\xlsxcontenttypes.cpp" />
+    <ClCompile Include="xlsx\xlsxdatavalidation.cpp" />
+    <ClCompile Include="xlsx\xlsxdocpropsapp.cpp" />
+    <ClCompile Include="xlsx\xlsxdocpropscore.cpp" />
+    <ClCompile Include="xlsx\xlsxdocument.cpp" />
+    <ClCompile Include="xlsx\xlsxdrawing.cpp" />
+    <ClCompile Include="xlsx\xlsxdrawinganchor.cpp" />
+    <ClCompile Include="xlsx\xlsxformat.cpp" />
+    <ClCompile Include="xlsx\xlsxmediafile.cpp" />
+    <ClCompile Include="xlsx\xlsxnumformatparser.cpp" />
+    <ClCompile Include="xlsx\xlsxrelationships.cpp" />
+    <ClCompile Include="xlsx\xlsxrichstring.cpp" />
+    <ClCompile Include="xlsx\xlsxsharedstrings.cpp" />
+    <ClCompile Include="xlsx\xlsxsimpleooxmlfile.cpp" />
+    <ClCompile Include="xlsx\xlsxstyles.cpp" />
+    <ClCompile Include="xlsx\xlsxtheme.cpp" />
+    <ClCompile Include="xlsx\xlsxutility.cpp" />
+    <ClCompile Include="xlsx\xlsxworkbook.cpp" />
+    <ClCompile Include="xlsx\xlsxworksheet.cpp" />
+    <ClCompile Include="xlsx\xlsxzipreader.cpp" />
+    <ClCompile Include="xlsx\xlsxzipwriter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="formimageanalyzer.h" />
@@ -134,6 +166,58 @@
     <QtRcc Include="formimageanalyzer.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="excelreader.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\Qt\Qt5.12.1\User\CasitMark SDK\3rdlib\libusb-1.0.22;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtXml;.\..\Cocer200Scan</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtXml</IncludePath>
+    </QtMoc>
+    <ClInclude Include="xlsx\xlsxabstractooxmlfile.h" />
+    <ClInclude Include="xlsx\xlsxabstractooxmlfile_p.h" />
+    <ClInclude Include="xlsx\xlsxabstractsheet.h" />
+    <ClInclude Include="xlsx\xlsxabstractsheet_p.h" />
+    <ClInclude Include="xlsx\xlsxcell.h" />
+    <ClInclude Include="xlsx\xlsxcellformula.h" />
+    <ClInclude Include="xlsx\xlsxcellformula_p.h" />
+    <ClInclude Include="xlsx\xlsxcellrange.h" />
+    <ClInclude Include="xlsx\xlsxcellreference.h" />
+    <ClInclude Include="xlsx\xlsxcell_p.h" />
+    <ClInclude Include="xlsx\xlsxchart.h" />
+    <ClInclude Include="xlsx\xlsxchartsheet.h" />
+    <ClInclude Include="xlsx\xlsxchartsheet_p.h" />
+    <ClInclude Include="xlsx\xlsxchart_p.h" />
+    <ClInclude Include="xlsx\xlsxcolor_p.h" />
+    <ClInclude Include="xlsx\xlsxconditionalformatting.h" />
+    <ClInclude Include="xlsx\xlsxconditionalformatting_p.h" />
+    <ClInclude Include="xlsx\xlsxcontenttypes_p.h" />
+    <ClInclude Include="xlsx\xlsxdatavalidation.h" />
+    <ClInclude Include="xlsx\xlsxdatavalidation_p.h" />
+    <ClInclude Include="xlsx\xlsxdocpropsapp_p.h" />
+    <ClInclude Include="xlsx\xlsxdocpropscore_p.h" />
+    <ClInclude Include="xlsx\xlsxdocument_p.h" />
+    <ClInclude Include="xlsx\xlsxdrawinganchor_p.h" />
+    <ClInclude Include="xlsx\xlsxdrawing_p.h" />
+    <ClInclude Include="xlsx\xlsxformat.h" />
+    <ClInclude Include="xlsx\xlsxformat_p.h" />
+    <ClInclude Include="xlsx\xlsxglobal.h" />
+    <ClInclude Include="xlsx\xlsxmediafile_p.h" />
+    <ClInclude Include="xlsx\xlsxnumformatparser_p.h" />
+    <ClInclude Include="xlsx\xlsxrelationships_p.h" />
+    <ClInclude Include="xlsx\xlsxrichstring.h" />
+    <ClInclude Include="xlsx\xlsxrichstring_p.h" />
+    <ClInclude Include="xlsx\xlsxsharedstrings_p.h" />
+    <ClInclude Include="xlsx\xlsxsimpleooxmlfile_p.h" />
+    <ClInclude Include="xlsx\xlsxstyles_p.h" />
+    <ClInclude Include="xlsx\xlsxtheme_p.h" />
+    <ClInclude Include="xlsx\xlsxutility_p.h" />
+    <ClInclude Include="xlsx\xlsxworkbook.h" />
+    <ClInclude Include="xlsx\xlsxworkbook_p.h" />
+    <ClInclude Include="xlsx\xlsxworksheet.h" />
+    <ClInclude Include="xlsx\xlsxworksheet_p.h" />
+    <ClInclude Include="xlsx\xlsxzipreader_p.h" />
+    <ClInclude Include="xlsx\xlsxzipwriter_p.h" />
+    <QtMoc Include="xlsx\xlsxdocument.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\Qt\Qt5.12.1\User\CasitMark SDK\3rdlib\libusb-1.0.22;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtXml;.\..\Cocer200Scan</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtXml</IncludePath>
+    </QtMoc>
     <QtMoc Include="scansetting.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\Qt\Qt5.12.1\User\CasitMark SDK\3rdlib\libusb-1.0.22;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtXml;.\..\Cocer200Scan</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtXml</IncludePath>

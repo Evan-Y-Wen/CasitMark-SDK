@@ -3,6 +3,7 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_formimageanalyzer.h"
 #include "appconfig.h"
+#include "excelreader.h"
 #include "pixitem.h"
 #include "mygraphicsview.h"
 #include "recognizeform.h"
@@ -50,6 +51,7 @@ public slots:
 	void OnButtonReRecognize();
 	void OnButtonAddData();
 	void OnButtonSaveData();
+	void OnButtonExcelResult();
 
 	//其他
 	void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
@@ -69,6 +71,7 @@ public:
 private:
 	QString *appExeFolder = nullptr;//程序运行目录
 	AppConfig *appConfig = nullptr;//XML文件配置读取
+	ExcelReader *_mExcelReader = nullptr;//excel操作
 
 	QPixmap *_mPixmap = nullptr;//原图
 	PixItem *_mPixItem = nullptr;

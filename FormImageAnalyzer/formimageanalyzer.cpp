@@ -15,6 +15,7 @@ FormImageAnalyzer::FormImageAnalyzer(QWidget *parent)
 	appExeFolder = new QString(QCoreApplication::applicationDirPath());//"G:\Qt\Qt5.12.1\User\CasitMark SDK\x64\Debug"
 	appConfig = new AppConfig;//XML文件配置读取
 	appConfig->readXMLElement((*appExeFolder) + "/AppConfig.xml");//已验证，能读出，且存在appConfig的公有成员变量里。
+	_mExcelReader = new ExcelReader;
 	_mPixmap = nullptr;
 	_mPixItem = nullptr;
 	_mGraphicsScene = nullptr;
@@ -41,6 +42,10 @@ FormImageAnalyzer::~FormImageAnalyzer()
 	{
 		delete appConfig;
 	}
+	if (_mExcelReader != nullptr)
+	{
+		delete _mExcelReader;
+	}
 	if (_mPixmap != nullptr)
 	{
 		delete _mPixmap;
@@ -63,6 +68,7 @@ FormImageAnalyzer::~FormImageAnalyzer()
 	}
 	appExeFolder = nullptr;
 	appConfig = nullptr;
+	_mExcelReader = nullptr;
 	_mPixmap = nullptr;
 	_mPixItem = nullptr;
 	_mGraphicsScene = nullptr;
@@ -376,6 +382,46 @@ void FormImageAnalyzer::OnButtonSaveData()
 
 
 /***************************************
+*函数功能：结果转换按钮槽函数，将model结果转换成Excel表格
+*输入：
+*	void
+*输出：
+*	void
+*作者：JZQ
+*时间版本：2019-07-03-V1.0
+***************************************/
+void FormImageAnalyzer::OnButtonExcelResult()
+{
+	try
+	{
+		_mExcelReader->newExcel();//新建一个Excel
+		//表头设置
+		for (unsigned iColumn = 0; iColumn < _mModelColumn; ++iColumn)
+		{
+			_mExcelReader->writeExcel(1, iColumn + 1, QStringLiteral("分组-%1").arg(iColumn + 1));
+		}
+		//内容设置
+		for (unsigned iRow = 0; iRow < _mModelRow; ++iRow)
+		{
+			for (unsigned iColumn = 0; iColumn < _mModelColumn; ++iColumn)
+			{
+				if (_mModel->item(iRow, iColumn)->text() == "")
+				{
+					continue;
+				}
+				_mExcelReader->writeExcel(iRow + 2, iColumn + 1, _mModel->item(iRow, iColumn)->text());
+			}
+		}
+		QMessageBox::information(this, QStringLiteral("成功"), QStringLiteral("Excel保存成功！"));
+	}
+	catch (...)
+	{
+		QMessageBox::critical(this, QStringLiteral("失败"), QStringLiteral("Excel保存失败！"));
+	}
+}
+
+
+/***************************************
 *函数功能：视图上选择项改变槽函数（重载函数，名称固定）
 *输入：
 *	selected：新选择项
@@ -439,7 +485,7 @@ void FormImageAnalyzer::setupModel()
 	_mModel = new QStandardItemModel(_mModelRow, _mModelColumn, this);
 	for (unsigned iColumn = 0; iColumn < _mModelColumn; ++iColumn)
 	{
-		_mModel->setHeaderData(iColumn, Qt::Horizontal, QStringLiteral("分组-") + QString::number(iColumn + 1));
+		_mModel->setHeaderData(iColumn, Qt::Horizontal, QStringLiteral("分组-%1").arg(iColumn + 1));
 	}
 }
 
