@@ -1,5 +1,4 @@
 #include "formimageanalyzer.h"
-#include "recognizeform.h"
 #include <QtWidgets/QApplication>
 
 //ÆÕÍ¨º¯ÊıÉùÃ÷

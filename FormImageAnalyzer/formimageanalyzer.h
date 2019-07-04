@@ -7,6 +7,8 @@
 #include "pixitem.h"
 #include "mygraphicsview.h"
 #include "recognizeform.h"
+#include "MPattern.h"
+#include "Cm3FormResult.h"
 
 #include <QFileDialog>
 #include <QFile>
@@ -80,6 +82,6 @@ private:
 	int _mModelRow;
 	int _mModelColumn;
 	QItemSelectionModel *_mSelectionModel = nullptr;
-
+	//Cm3::FormPattern::MPattern *_mCurrentPattern;
 
 };

@@ -23,6 +23,7 @@ FormImageAnalyzer::FormImageAnalyzer(QWidget *parent)
 	_mModelRow = 0;
 	_mModelColumn = 0;
 	_mSelectionModel = nullptr;
+	//_mCurrentPattern = new Cm3::FormPattern::MPattern;
 
 	//控件配置初始化
 	ui.splitter->setStretchFactor(0, 5);//设置两个分割窗口的比例为5:2
