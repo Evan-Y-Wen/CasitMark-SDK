@@ -6,6 +6,7 @@ namespace Cm3
 	{
 		class MCellResult
 		{
+			// 存放已填涂的单元格信息。
 		public:
 			MCellResult();
 			~MCellResult();

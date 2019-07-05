@@ -26,6 +26,8 @@ namespace Cm3
 			// 表格图像文件名
 			QString _formImageName;
 
+			// todo:上面三个属性都是表格结果对应图像的信息，我觉得放在MFormImageFile类中更好。
+
 			// 表格图像是否为空白纸
 			bool _isBlank;
 

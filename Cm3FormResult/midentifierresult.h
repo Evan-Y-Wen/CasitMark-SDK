@@ -36,10 +36,10 @@ namespace Cm3
 
 		private:
 			// 标志码识别区域结果值
-			QList<MRegionResult *> * _identifierCodeSearchRegions;
+			QList<MRegionResult *> * _identifierCodeSearchRegionsResult;
 
 			// 标志码识别类型结果值
-			QList<MIdentifierTypeResult> * _barIdentifierCodeTypes;
+			QList<MIdentifierTypeResult> * _barIdentifierCodeTypesResult;
 
 		};
 	}
