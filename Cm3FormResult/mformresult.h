@@ -2,6 +2,7 @@
 
 #include <QString>
 #include "mgroupresult.h"
+#include "midentifierresult.h"
 
 
 namespace Cm3
@@ -16,6 +17,9 @@ namespace Cm3
 
 
 		private:
+			// 表格名称
+			QString _formName;
+
 			// 表格在模式中的索引
 			int _formIndex;
 
@@ -31,8 +35,14 @@ namespace Cm3
 			// 该结果是否为矫正后结果
 			bool _isRectified;
 
-			// 填涂块结果
+			// 识别的填涂块结果
 			MGroupResult * _markGroupResult;
+
+			// 截图结果
+			MGroupResult * _imageShotResult;
+
+			// 标志码结果：简单码或二维码
+			MIdentifierResult * _identifierResult;
 
 		};
 	}

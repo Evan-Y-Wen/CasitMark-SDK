@@ -44,6 +44,15 @@
     <ClCompile Include="mmarkgroupresult.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="midentifierresult.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mregionresult.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mformimagefile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cm3formresult.h">
@@ -62,6 +71,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="mmarkgroupresult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="midentifierresult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mregionresult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mformimagefile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

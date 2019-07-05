@@ -99,18 +99,24 @@
   <ItemGroup>
     <ClCompile Include="cm3formresult.cpp" />
     <ClCompile Include="mcellresult.cpp" />
+    <ClCompile Include="mformimagefile.cpp" />
     <ClCompile Include="mformresult.cpp" />
     <ClCompile Include="mgroupresult.cpp" />
+    <ClCompile Include="midentifierresult.cpp" />
     <ClCompile Include="mmarkgroupresult.cpp" />
+    <ClCompile Include="mregionresult.cpp" />
     <ClCompile Include="mresult.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cm3formresult.h" />
     <ClInclude Include="cm3formresult_global.h" />
     <ClInclude Include="mcellresult.h" />
+    <ClInclude Include="mformimagefile.h" />
     <ClInclude Include="mformresult.h" />
     <ClInclude Include="mgroupresult.h" />
+    <ClInclude Include="midentifierresult.h" />
     <ClInclude Include="mmarkgroupresult.h" />
+    <ClInclude Include="mregionresult.h" />
     <ClInclude Include="mresult.h" />
   </ItemGroup>
   <ItemGroup>
