@@ -23,7 +23,8 @@ FormImageAnalyzer::FormImageAnalyzer(QWidget *parent)
 	_mModelRow = 0;
 	_mModelColumn = 0;
 	_mSelectionModel = nullptr;
-	//_mCurrentPattern = new Cm3::FormPattern::MPattern;
+	_mCurrentPattern = new Cm3::FormPattern::MPattern; // 当前使用的模式
+	_mCurrentResult = new Cm3::FormResult::MResult; // 当前识别的结果
 
 	//控件配置初始化
 	ui.splitter->setStretchFactor(0, 5);//设置两个分割窗口的比例为5:2
@@ -67,6 +68,14 @@ FormImageAnalyzer::~FormImageAnalyzer()
 	{
 		delete _mSelectionModel;
 	}
+	if (_mCurrentPattern != nullptr)
+	{
+		delete _mCurrentPattern;
+	}
+	if (_mCurrentResult != nullptr)
+	{
+		delete _mCurrentResult;
+	}
 	appExeFolder = nullptr;
 	appConfig = nullptr;
 	_mExcelReader = nullptr;
@@ -77,6 +86,8 @@ FormImageAnalyzer::~FormImageAnalyzer()
 	_mModelRow = 0;
 	_mModelColumn = 0;
 	_mSelectionModel = nullptr;
+	_mCurrentPattern = nullptr;
+	_mCurrentResult = nullptr;
 }
 
 
@@ -187,18 +198,18 @@ void FormImageAnalyzer::OnButtonOpenPatten()
 	}
 	_mPixmap = new QPixmap;
 
+	if (!(_mPixmap->load(fileName))) //加载图像
+	{
+		QMessageBox::information(this, QStringLiteral("失败"), QStringLiteral("打开图像失败!"));
+		return;
+	}
+
 	if (_mPixItem != nullptr)
 	{
 		delete _mPixItem;
 		_mPixItem = nullptr;
 	}
 	_mPixItem = new PixItem(_mPixmap);
-
-	if (!(_mPixmap->load(fileName))) //加载图像
-	{
-		QMessageBox::information(this, QStringLiteral("失败"), QStringLiteral("打开图像失败!"));
-		return;
-	}
 
 	if (_mGraphicsScene != nullptr)
 	{
@@ -395,7 +406,11 @@ void FormImageAnalyzer::OnButtonExcelResult()
 {
 	try
 	{
-		_mExcelReader->newExcel();//新建一个Excel
+		//新建一个Excel
+		if (!_mExcelReader->newExcel())
+		{
+			throw "-1";
+		}
 		//表头设置
 		for (unsigned iColumn = 0; iColumn < _mModelColumn; ++iColumn)
 		{
@@ -509,4 +524,21 @@ void FormImageAnalyzer::setupView()
 	_mSelectionModel = ui.tableView->selectionModel();//获得视图上的选择项
 	_mPixItem->setSelectionModel(_mSelectionModel);//在图元中获得视图上的选择项
 	connect(_mSelectionModel, SIGNAL(selectionChanged(QItemSelection, QItemSelection)), this, SLOT(selectionChanged(QItemSelection, QItemSelection)));
+}
+
+
+/***************************************
+*函数功能：加载模式结构，显示到界面
+*输入：
+*	void
+*输出：
+*	void
+*作者：JZQ
+*时间版本：2019-07-09-V1.0
+***************************************/
+void FormImageAnalyzer::addPatternStructure()
+{
+	// todo:后期修改，应该是，加载了模式，该结构就确定了。
+	// ui.listView->;
+	//ui.treeWidget;
 }

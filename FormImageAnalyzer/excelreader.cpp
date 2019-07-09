@@ -25,17 +25,18 @@ ExcelReader::~ExcelReader()
 *输入：
 *	void
 *输出：
-*	void
+*	bool：是否新建成功
 *作者：JZQ
 *时间版本：2019-07-03-V1.0
 ***************************************/
-void ExcelReader::newExcel()
+bool ExcelReader::newExcel()
 {
 	//新建Excel文件
 	QString excelSaveFileName = QFileDialog::getSaveFileName(0, QStringLiteral("保存数据结果到..."), QString(), "Excel(*.xlsx)");
 	if (excelSaveFileName.isEmpty())
 	{
 		QMessageBox::information(0, QStringLiteral("取消新建"), QStringLiteral("取消EXCEL新建"));
+		return false;
 	}
 	if (_mExcel != nullptr)
 	{
@@ -46,8 +47,10 @@ void ExcelReader::newExcel()
 	if (_mExcel == nullptr)
 	{
 		QMessageBox::critical(0, QStringLiteral("错误信息"), QStringLiteral("EXCEL对象丢失"));
-		return;
+		return false;
 	}
+
+	return true;
 }
 
 
@@ -56,17 +59,18 @@ void ExcelReader::newExcel()
 *输入：
 *	void
 *输出：
-*	void
+*	bool：是否打开成功
 *作者：JZQ
 *时间版本：2019-07-03-V1.0
 ***************************************/
-void ExcelReader::openExcel()
+bool ExcelReader::openExcel()
 {
 	//打开Excel文件
 	QString excelFileName = QFileDialog::getOpenFileName(0, QString(), QString(), "Excel(*.xlsx)");
 	if (excelFileName.isEmpty())
 	{
 		QMessageBox::information(0, QStringLiteral("取消选择"), QStringLiteral("取消EXCEL选择"));
+		return false;
 	}
 	if (_mExcel != nullptr)
 	{
@@ -77,8 +81,10 @@ void ExcelReader::openExcel()
 	if (_mExcel == nullptr)
 	{
 		QMessageBox::critical(0, QStringLiteral("错误信息"), QStringLiteral("EXCEL对象丢失"));
-		return;
+		return false;
 	}
+
+	return true;
 }
 
 
@@ -87,16 +93,16 @@ void ExcelReader::openExcel()
 *输入：
 *	void
 *输出：
-*	void
+*	bool：是否读取成功
 *作者：JZQ
 *时间版本：2019-06-12-V2.0
 ***************************************/
-void ExcelReader::readExcel()
+bool ExcelReader::readExcel()
 {
 	if (_mExcel == nullptr)
 	{
 		QMessageBox::warning(0, QStringLiteral("错误信息"), QStringLiteral("请先新建或打开一个EXCEL对象！"));
-		return;
+		return false;
 	}
 
 	QXlsx::Workbook *workBook = _mExcel->workbook();
@@ -117,6 +123,7 @@ void ExcelReader::readExcel()
 		}
 	}
 	qDebug() << QStringLiteral("读取成功");
+	return true;
 }
 
 
@@ -126,27 +133,29 @@ void ExcelReader::readExcel()
 *	iRow:要写入的行
 *	iColumn:要写入的列
 *	content:要写入的内容
+*输出：
+*	bool：是否写入成功
 *作者：JZQ
 *时间版本：2019-07-03-V1.0
 ***************************************/
-void ExcelReader::writeExcel(const int iRow, const int iColumn, const QString content)
+bool ExcelReader::writeExcel(const int iRow, const int iColumn, const QString content)
 {
 	if (_mExcel == nullptr)
 	{
 		QMessageBox::warning(0, QStringLiteral("错误信息"), QStringLiteral("请先新建或打开一个EXCEL对象！"));
-		return;
+		return false;
 	}
 	if (iRow <= 0 || iColumn <= 0)
 	{
 		QMessageBox::warning(0, QStringLiteral("错误信息"), QStringLiteral("写入的行或列索引小于等于0！"));
-		return;
+		return false;
 	}
 	if (!_mExcel->write(iRow, iColumn, content))
 	{
 		QMessageBox::warning(0, QStringLiteral("错误信息"), QStringLiteral("写入出错！"));
-		return;
+		return false;
 	}
-	_mExcel->save();
+	return _mExcel->save();
 }
 
 

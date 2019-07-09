@@ -9,17 +9,17 @@ namespace Cm3
 	namespace FormResult
 	{
 		class MGroupResult
-		{
+		{ // 对应一个分组
 		public:
 			MGroupResult();
 			~MGroupResult();
 
 		private:
-			// 已填涂的单元格结果
-			QList<MCellResult *> *_cellResults;// MCell,图像中的单元格（填涂快）
+			// 存放一个分组中的所有单元格结果
+			QList<MCellResult *> *_cellResults;
 
-			// 已填涂的单元格对应在哪个分组的结果  分组结果好像不需要了。
-			QList<MMarkGroupResult *> *_markGroupResults;// todo:我觉得这块内容放在MCellResult里更好。
+			// 单元格对应在哪个分组的结果
+			MMarkGroupResult *_markGroupResults;
 
 		};
 	}

@@ -13,14 +13,17 @@ namespace Cm3
 			~MFormImageFile();
 
 		private:
-			// 表格图像索引名
-			QString _formImageName;
+			// 该表格对应的图像文件名
+			QString _imageFileName;
 
-			// 表格图像所在结果文件的位置
+			// 该表格对应的图像文件所在的位置
 			int _positionFolder;
 
-			// 表格图像长度
-			int Length;
+			// 该表格对应的图像文件是否为空白纸
+			bool _isBlank;
+
+			// 该表格对应的图像文件是否正向放置
+			bool _isForwardDirection;
 
 		};
 	}

@@ -2,13 +2,14 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_formimageanalyzer.h"
+
 #include "appconfig.h"
 #include "excelreader.h"
 #include "pixitem.h"
 #include "mygraphicsview.h"
 #include "recognizeform.h"
 #include "MPattern.h"
-#include "Cm3FormResult.h"
+#include "mresult.h"
 
 #include <QFileDialog>
 #include <QFile>
@@ -22,6 +23,7 @@
 #include <QTextStream>
 #include <QStringList>
 #include <QVector>
+#include <QPixmap>
 
 
 class FormImageAnalyzer : public QMainWindow
@@ -65,6 +67,7 @@ public slots:
 public:
 	void setupModel();
 	void setupView();
+	void addPatternStructure();
 
 /***************************************
 *定义：成员变量
@@ -82,6 +85,7 @@ private:
 	int _mModelRow;
 	int _mModelColumn;
 	QItemSelectionModel *_mSelectionModel = nullptr;
-	//Cm3::FormPattern::MPattern *_mCurrentPattern;
+	Cm3::FormPattern::MPattern *_mCurrentPattern = nullptr;
+	Cm3::FormResult::MResult *_mCurrentResult = nullptr;
 
 };
