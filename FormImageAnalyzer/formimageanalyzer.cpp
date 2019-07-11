@@ -32,6 +32,7 @@ FormImageAnalyzer::FormImageAnalyzer(QWidget *parent)
 
 	//第一次运行界面时的初始化
 	OnButtonOpenPatten();//载入图片_mPixmap，并初始化_mPixItem
+	addPatternStructure();
 }
 
 FormImageAnalyzer::~FormImageAnalyzer()
@@ -539,6 +540,28 @@ void FormImageAnalyzer::setupView()
 void FormImageAnalyzer::addPatternStructure()
 {
 	// todo:后期修改，应该是，加载了模式，该结构就确定了。
-	// ui.listView->;
-	//ui.treeWidget;
+	ui.treeWidget->setHeaderLabel(u8"模式名称："); 
+	QTreeWidgetItem *identifierItem = new QTreeWidgetItem(ui.treeWidget, QStringList(u8"标志码"));
+	QTreeWidgetItem *identifierTypeItem = new QTreeWidgetItem(identifierItem, QStringList(u8"标志码类型"));
+	
+	QTreeWidgetItem *markGroupItem = new QTreeWidgetItem(ui.treeWidget, QStringList(u8"填涂区"));
+	QTreeWidgetItem *groupItem1 = new QTreeWidgetItem(markGroupItem, QStringList(u8"分组-1"));
+	QTreeWidgetItem *groupItem2 = new QTreeWidgetItem(markGroupItem, QStringList(u8"分组-2"));
+	QTreeWidgetItem *groupItem3 = new QTreeWidgetItem(markGroupItem, QStringList(u8"分组-3"));
+	QTreeWidgetItem *groupItem4 = new QTreeWidgetItem(markGroupItem, QStringList(u8"分组-4"));
+	QTreeWidgetItem *groupItem5 = new QTreeWidgetItem(markGroupItem, QStringList(u8"分组-5"));
+	QTreeWidgetItem *groupItem6 = new QTreeWidgetItem(markGroupItem, QStringList(u8"分组-6"));
+
+	QTreeWidgetItem *cellItem01 = new QTreeWidgetItem(groupItem1, QStringList(u8"cell(0-1)"));
+	QTreeWidgetItem *cellItem02 = new QTreeWidgetItem(groupItem1, QStringList(u8"cell(0-2)"));
+	QTreeWidgetItem *cellItem03 = new QTreeWidgetItem(groupItem1, QStringList(u8"cell(0-3)"));
+	QTreeWidgetItem *cellItem04 = new QTreeWidgetItem(groupItem1, QStringList(u8"cell(0-4)"));
+	QTreeWidgetItem *cellItem05 = new QTreeWidgetItem(groupItem1, QStringList(u8"cell(0-5)"));
+
+	QTreeWidgetItem *cellItem11 = new QTreeWidgetItem(groupItem2, QStringList(u8"cell(1-1)"));
+	QTreeWidgetItem *cellItem12 = new QTreeWidgetItem(groupItem2, QStringList(u8"cell(1-2)"));
+	QTreeWidgetItem *cellItem13 = new QTreeWidgetItem(groupItem2, QStringList(u8"cell(1-3)"));
+	QTreeWidgetItem *cellItem14 = new QTreeWidgetItem(groupItem2, QStringList(u8"cell(1-4)"));
+	QTreeWidgetItem *cellItem15 = new QTreeWidgetItem(groupItem2, QStringList(u8"cell(1-5)"));
+	
 }

@@ -24,6 +24,7 @@
 #include <QStringList>
 #include <QVector>
 #include <QPixmap>
+#include <QTreeWidget>
 
 
 class FormImageAnalyzer : public QMainWindow
