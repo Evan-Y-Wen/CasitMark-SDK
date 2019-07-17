@@ -11,6 +11,7 @@
 #include "MPattern.h"
 #include "mresult.h"
 
+
 #include <QFileDialog>
 #include <QFile>
 #include <QMessageBox>
