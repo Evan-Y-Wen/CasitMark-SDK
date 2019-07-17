@@ -45,10 +45,10 @@ namespace Cm3
 			MIdentifierPattern * _identifierPattern;
 
 			// 需要识别的填涂块信息
-			MGroupPattern * _markGroupPattern;
+			QList<MGroupPattern *> * _markGroupPattern;
 
 			// 截图信息
-			MGroupPattern * _imageShotPattern;
+			QList<MGroupPattern *> * _imageShotPattern;
 
 			// 模式文件释放后得到临时数据
 			// 识别时，tiff黑白图解压出图像数据
