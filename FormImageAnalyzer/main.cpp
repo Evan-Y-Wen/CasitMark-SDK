@@ -1,8 +1,7 @@
 #include "formimageanalyzer.h"
 #include <QtWidgets/QApplication>
 
-//普通函数声明
-//普通函数声明
+
 //普通函数声明
 void ChangeStyle();//加载系统样式表单
 

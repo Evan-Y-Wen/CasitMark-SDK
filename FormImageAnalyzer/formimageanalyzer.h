@@ -10,6 +10,8 @@
 #include "recognizeform.h"
 #include "MPattern.h"
 #include "mresult.h"
+#include <QZXing.h>
+
 
 #include <QFileDialog>
 #include <QFile>

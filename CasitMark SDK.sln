@@ -11,6 +11,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cm3FormPattern", "Cm3FormPa
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cm3FormResult", "Cm3FormResult\Cm3FormResult.vcxproj", "{467F93D0-9186-4B0E-929D-E1DDDA9A99B6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FormPatternMaker", "FormPatternMaker\FormPatternMaker.vcxproj", "{26143CE1-34B1-4C51-881D-E918C3D30301}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QRcodeBuilder", "QRcodeBuilder\QRcodeBuilder.vcxproj", "{6D0BD8F0-1808-402F-B9AB-5C3DF8BC7413}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FormImageGetter", "FormImageGetter\FormImageGetter.vcxproj", "{7779FB54-2289-4365-8803-68AB55848103}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -33,6 +39,18 @@ Global
 		{467F93D0-9186-4B0E-929D-E1DDDA9A99B6}.Debug|x64.Build.0 = Debug|x64
 		{467F93D0-9186-4B0E-929D-E1DDDA9A99B6}.Release|x64.ActiveCfg = Release|x64
 		{467F93D0-9186-4B0E-929D-E1DDDA9A99B6}.Release|x64.Build.0 = Release|x64
+		{26143CE1-34B1-4C51-881D-E918C3D30301}.Debug|x64.ActiveCfg = Debug|x64
+		{26143CE1-34B1-4C51-881D-E918C3D30301}.Debug|x64.Build.0 = Debug|x64
+		{26143CE1-34B1-4C51-881D-E918C3D30301}.Release|x64.ActiveCfg = Release|x64
+		{26143CE1-34B1-4C51-881D-E918C3D30301}.Release|x64.Build.0 = Release|x64
+		{6D0BD8F0-1808-402F-B9AB-5C3DF8BC7413}.Debug|x64.ActiveCfg = Debug|x64
+		{6D0BD8F0-1808-402F-B9AB-5C3DF8BC7413}.Debug|x64.Build.0 = Debug|x64
+		{6D0BD8F0-1808-402F-B9AB-5C3DF8BC7413}.Release|x64.ActiveCfg = Release|x64
+		{6D0BD8F0-1808-402F-B9AB-5C3DF8BC7413}.Release|x64.Build.0 = Release|x64
+		{7779FB54-2289-4365-8803-68AB55848103}.Debug|x64.ActiveCfg = Debug|x64
+		{7779FB54-2289-4365-8803-68AB55848103}.Debug|x64.Build.0 = Debug|x64
+		{7779FB54-2289-4365-8803-68AB55848103}.Release|x64.ActiveCfg = Release|x64
+		{7779FB54-2289-4365-8803-68AB55848103}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

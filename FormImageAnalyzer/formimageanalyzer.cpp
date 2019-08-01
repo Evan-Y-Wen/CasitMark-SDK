@@ -105,6 +105,14 @@ void FormImageAnalyzer::OnButtonZoomIn()
 {
 	ui.graphicsView->setScale(ui.graphicsView->getScale() + 1);
 	ui.graphicsView->centerOn(_mPixItem);
+
+	QImage imageToDecode("QRCode1-8.jpg");
+	//QString path = QFileDialog::getOpenFileName();
+	QZXing decoder;
+	//decoder.setDecoder(QZXing::DecoderFormat_QR_CODE | QZXing::DecoderFormat_EAN_13);
+	//QString result = decoder.decodeImageFromFile(path);
+	QString result = decoder.decodeImage(imageToDecode);
+	qDebug() << result;
 }
 
 

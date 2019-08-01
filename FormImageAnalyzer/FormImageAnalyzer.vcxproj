@@ -54,7 +54,7 @@
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_XML_LIB;XLSX_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>G:\Qt\Qt5.12.1\User\CasitMark SDK\3rdlib\libusb-1.0.22;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtXml;..\Cocer200Scan;..\Cm3FormPattern;..\Cm3FormResult;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\Qt\Qt5.12.1\User\CasitMark SDK\3rdlib\QZXing-sourceV2.4\MSVC64;G:\Qt\Qt5.12.1\User\CasitMark SDK\3rdlib\libusb-1.0.22;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtXml;..\Cocer200Scan;..\Cm3FormPattern;..\Cm3FormResult;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -63,14 +63,14 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(QTDIR)\lib;G:\Qt\Qt5.12.1\User\CasitMark SDK\3rdlib\libusb-1.0.22\MS64\static;G:\Qt\Qt5.12.1\User\CasitMark SDK\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>G:\Qt\Qt5.12.1\User\CasitMark SDK\3rdlib\QZXing-sourceV2.4\MSVC64;$(QTDIR)\lib;G:\Qt\Qt5.12.1\User\CasitMark SDK\3rdlib\libusb-1.0.22\MS64\static;G:\Qt\Qt5.12.1\User\CasitMark SDK\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;Qt5Xmld.lib;Cocer200Scan.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;Qt5Xmld.lib;Cocer200Scan.lib;QZXing2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
-      <IncludePath>G:\Qt\Qt5.12.1\User\CasitMark SDK\3rdlib\libusb-1.0.22;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtXml;..\Cocer200Scan;..\Cm3FormPattern;..\Cm3FormResult;%(AdditionalIncludeDirectories)</IncludePath>
+      <IncludePath>G:\Qt\Qt5.12.1\User\CasitMark SDK\3rdlib\QZXing-sourceV2.4\MSVC64;G:\Qt\Qt5.12.1\User\CasitMark SDK\3rdlib\libusb-1.0.22;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtXml;..\Cocer200Scan;..\Cm3FormPattern;..\Cm3FormResult;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_XML_LIB;XLSX_NO_LIB;%(PreprocessorDefinitions)</Define>
     </QtMoc>
     <QtUic>
